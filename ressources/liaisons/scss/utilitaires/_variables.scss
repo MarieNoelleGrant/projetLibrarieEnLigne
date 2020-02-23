@@ -1,0 +1,62 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ *
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * Polices de caractères
+ * Palette de couleurs
+ * Points de rupture
+ **/
+
+/** Polices de caractères **/
+/***************************/
+
+/** Importation des fonts **/
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Roboto:300,300i,400,500,500i,700&display=swap');
+
+/** Polices de caractères **/
+
+$fontePrimaire: 'Playfair Display', Arial, sans-serif;
+$fonteSecondaire: 'Roboto', Arial, sans-serif;
+
+/** Palette de couleurs **/
+// Au besoin utiliser http://chir.ag/projects/name-that-color pour nommer les couleurs
+
+// Couleurs de base
+$noir: #000;
+$blanc: #fff;
+$charcoal: #262626;
+$grisUltraPale: #fafafa;
+$grisPale: #EFEFEF;
+$gris: #E0E0E0;
+// Couleurs d'interactivité
+$corail: #FF846E;
+$corail--25: transparentize(#FF846E, 0.75);
+$corail--moyen: #FFD2CA;
+$corail--pale: #FFECEA;
+$corail--tresPale: #FFF7F6;
+// Couleurs autres
+$beige: #F3EED6;
+$beige--25: transparentize(#F3EED6, 0.75);
+$turquoise: #A8CBCC;
+$turquoise--pale: #D7E7E8;
+$turquoise--25: transparentize(#A8CBCC, 0.75);
+$turquoise--25-solid: #E9F2F2;
+$marine: #092F47;
+$marine--25: transparentize(#092F47, 0.75);
+$marine--pale: #0C4568;
+
+// Dégradés
+$degrade_corail: linear-gradient(#FFAEA0, #f97e68);
+
+
+
+
+/** Points de rupture **/
+/***********************/
+$large : 1500px;
+$bureau : 780px;
+$tablette : 480px;
+$mobile : 360px;

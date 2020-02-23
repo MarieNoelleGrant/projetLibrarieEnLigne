@@ -1,0 +1,804 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Styles de l'accueil
+ * ---------------------------------------------------------
+ * STYLES GÉNÉRAUX
+ * MOSAIC D'ARRIÈRE PLAN
+ * BANNIÈRE
+ * COUPS DE COEUR
+ * NOUVEAUTÉS
+ * ACTUALITÉS
+ */
+
+  /* --------------------------------------------- */
+  /* STYLES GÉNÉRAUX */
+  /* --------------------------------------------- */
+  // message rétroactif de déconnexion
+  .msgConnexion {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    line-height: 3.1;
+    svg {
+      width: 2rem;
+      height: 2rem;
+      margin: 0 6px -4px 0;
+    }
+
+    @media (max-width: $bureau) {
+      margin: 140px 10px 0;
+      padding: 20px;
+      line-height: 1.75;
+      border-radius: 2px;
+      background: white;
+      @include shadow--actualite();
+      svg {
+        width: 5rem;
+        height: 5rem;
+        margin: 0 10px -4px 0;
+        float: left;
+      }
+    }
+
+    &:empty {
+      opacity: 0;
+    }
+  }
+
+  .accueil {
+  // h2 -- mobile
+  .h2Accueil {
+    transition: all .2s ease-in-out;
+    position: relative;
+    margin: 0;
+    width: span(3 of 4) + gutter(4);
+    height: 60px;
+    padding-left: 20px;
+    font-weight: 900;
+    @include fontSize(32px);
+    line-height: 1.7;
+    // mini mobile de m...
+    @media (max-width: $mobile) {
+      @include fontSize(28px);
+      line-height: 2;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: -38px;
+      width: 38px;
+      height: 60px;
+      z-index: 1;
+    }
+  }
+
+  // h2 -- table
+  @media (max-width: $bureau) {
+    .actualites, .coupCoeur, .nouveautes {
+      &__nomSection{
+        margin: 0;
+      }
+    }
+  }
+  @media (min-width: $bureau) {
+    .actualites__nomSection, .coupCoeur__nomSection, .nouveautes__nomSection{
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+
+    .h2Accueil {
+      height: 100px;
+      @include fontSize(54px);
+      padding: 0;
+
+      &:after {
+        right: -60px;
+        width: 60px;
+        height: 100px;
+      }
+    }
+  }
+
+  // h2 -- tablette
+  @media (min-width: $bureau) AND (max-width: 940px) {
+    .h2Accueil {
+      @include fontSize(42px);
+      line-height: 2.2;
+    }
+  }
+
+
+  // Uniformisation des liens pour voir tous
+  .lienVoirTous {
+    &__conteneur {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      padding: 8px 30px 10px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 40px;
+        background: url("../images/triforce--blanc.svg") no-repeat 0 0 / contain;
+      }
+      // liens voir tous -- table
+      @media (min-width: $bureau) {
+        height: 100px;
+        text-align: center;
+
+        &:before {
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+
+  // h3
+  h3.p {
+    font-weight: 500;
+  }
+
+
+  /*-----------------------------------*/
+  /* MOSAIC D'ARRIÈRE PLAN */
+  /*-----------------------------------*/
+  &:before {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    height: 550px;
+    background: url("../images/mosaic--mobile@2x.png") no-repeat 0 0 / contain;
+    // mini-mobile
+    @media (max-width: $mobile) {
+      top: 82px;
+    }
+    // tablette
+    @media (min-width: $tablette) AND (max-width: $bureau) {
+      top: 20px;
+    }
+    // table
+    @media (min-width: $bureau) {
+      top: -6px;
+      height: 100vw;
+      background: url("../images/mosaic@2x.png") no-repeat center 0 /1340px;
+    }
+  }
+
+
+  /*-----------------------------------*/
+  /* BANNIÈRE */
+  /*-----------------------------------*/
+  .banniere {
+    margin: 20px gutter(4);
+    text-align: center;
+
+    @media (min-width: $bureau) {
+      margin: 42px gutter(4) 50px;
+    }
+  }
+
+
+  /* --------------------------------------------- */
+  /* COUPS DE COEUR */
+  /* --------------------------------------------- */
+  .coupCoeur {
+
+    // h2
+    &__couleurH2 {
+      background: $blanc;
+      @media (min-width: $bureau) {
+        background: linear-gradient(90deg, $marine 50%, transparent 0);
+      }
+    }
+
+    .h2Accueil {
+      color: $blanc;
+      background: $marine;
+
+      @media (min-width: $bureau) {
+        min-width: span(8 of 12) + gutter(12);
+      }
+      @media (min-width: $bureau) AND (max-width: 1120px) {
+        min-width: span(6 of 12) + gutter(12);
+      }
+
+      &:after {
+        background: url("../images/triforce--marine.svg") no-repeat 0 0 / contain;
+      }
+
+    }
+
+    // lien pour voir tous les ...
+    &__lienVoirTous {
+      background: $marine--25;
+
+      @media (min-width: $bureau) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:before {
+          left: initial;
+          right: 0;
+          width: 60px;
+          height: 100px;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    // GRID ! //
+    // mobile
+    &__grid {
+      @media (max-width: $bureau) {
+        margin: 30px 0 60px;
+        &_item:not(.coupCoeur__grid_item--desc) {
+          height: 130px;
+        }
+
+        &_item--desc {
+          margin: 0 10px;
+        }
+      }
+
+      &_item {
+        transition: all .2s ease-in-out;
+        border: 8px solid $grisPale;
+      }
+
+      &_item:not(.coupCoeur__grid_item--desc) {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: pointer;
+        background: $grisPale;
+        text-align: center;
+
+        &:hover {
+          .coupCoeur__titre {
+            bottom: 0;
+          }
+        }
+      }
+
+      &_item--selected {
+        border: 8px solid $corail;
+      }
+
+      &_item--desc {
+        padding: 10px;
+        background: $marine--25;
+        @media (min-width: $bureau) {
+          padding: 3%;
+        }
+      }
+      &_selectionnez {
+        text-align: center;
+        @media (min-width: $bureau) {
+          @include fontSize(20px);
+        }
+      }
+
+      //table
+      @media (min-width: $bureau) {
+        display: -ms-grid;
+        display: grid;
+        grid-template-columns: repeat(16, 6.25%);
+        grid-template-rows: repeat(16, 3.4%);
+
+        &_item {
+          width: 100%;
+          height: 100%;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:nth-of-type(1){
+            -ms-grid-column: 1;
+            grid-column-start: 1;
+            -ms-grid-column-span: 3;
+            grid-column-end: 4;
+            -ms-grid-row: 3;
+            grid-row-start: 3;
+            -ms-grid-row-span: 6;
+            grid-row-end: 9;
+          }
+
+          &:nth-of-type(2){
+            -ms-grid-column: 1;
+            grid-column-start: 1;
+            -ms-grid-column-span: 3;
+            grid-column-end: 4;
+            -ms-grid-row: 9;
+            grid-row-start: 9;
+            -ms-grid-row-span: 8;
+            grid-row-end: 17;
+          }
+
+          &:nth-of-type(3){
+            -ms-grid-column: 4;
+            grid-column-start: 4;
+            -ms-grid-column-span: 4;
+            grid-column-end: 8;
+            -ms-grid-row: 1;
+            grid-row-start: 1;
+            -ms-grid-row-span: 9;
+            grid-row-end: 10;
+          }
+
+          &:nth-of-type(4){
+            -ms-grid-column: 4;
+            grid-column-start: 4;
+            -ms-grid-column-span: 6;
+            grid-column-end: 10;
+            -ms-grid-row: 10;
+            grid-row-start: 10;
+            -ms-grid-row-span: 6;
+            grid-row-end: 16;
+          }
+
+          &:nth-of-type(5){
+            -ms-grid-column: 8;
+            grid-column-start: 8;
+            -ms-grid-column-span: 5;
+            grid-column-end: 13;
+            -ms-grid-row: 6;
+            grid-row-start: 6;
+            -ms-grid-row-span: 4;
+            grid-row-end: 10;
+          }
+
+          &:nth-of-type(6){
+            -ms-grid-column: 10;
+            grid-column-start: 10;
+            -ms-grid-column-span: 3;
+            grid-column-end: 13;
+            -ms-grid-row: 10;
+            grid-row-start: 10;
+            -ms-grid-row-span: 5;
+            grid-row-end: 15;
+          }
+
+          &:nth-of-type(7){
+            -ms-grid-column: 13;
+            grid-column-start: 13;
+            -ms-grid-column-span: 4;
+            grid-column-end: 17;
+            -ms-grid-row: 6;
+            grid-row-start: 6;
+            -ms-grid-row-span: 11;
+            grid-row-end: 17;
+          }
+
+          &:nth-of-type(8){
+            -ms-grid-column: 8;
+            grid-column-start: 8;
+            -ms-grid-column-span: 9;
+            grid-column-end: 17;
+            -ms-grid-row: 2;
+            grid-row-start: 2;
+            -ms-grid-row-span: 4;
+            grid-row-end: 6;
+          }
+        }
+      }
+    }
+
+    &__titre {
+      transition: all .5s cubic-bezier(.43,0,.17,1.28);
+      bottom: -70%;
+      position: absolute;
+      width: 100%;
+      padding: 5px;
+      background: $blanc;
+      text-align: center;
+      @include shadow--actualite;
+    }
+
+
+    &__image {
+      transform: translateY(-40px);
+      @media (min-width: $bureau) {
+        transform: scale(1.4) translateY(32px);
+      }
+    }
+
+    .tableOnly {
+      margin: 40px 0;
+      height: 56vw;
+      @media (min-width: 1200px) {
+        max-height: 680px;
+      }
+    }
+
+    // Suite au ajax pour avoir les informations d'un livre coup de coeur
+    // Mini styles quand il n'y a pas de livre sélectionné
+    &__grid_item--desc:not(.coupCoeur__info) {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    // Styles des informations dynamiques
+    &__info {
+      position: relative;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      min-height: 130px;
+      color: $blanc;
+      background: $marine;
+
+      p {
+        margin: 0;
+      }
+
+      &_titre {
+        opacity: .8;
+        width: 65%;
+      }
+
+      &_auteurs {
+        padding-bottom: 1rem;
+        font-style: italic;
+      }
+
+      &_prix {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        font-weight: 400;
+        @include fontSize(20px);
+        @media (max-width: $bureau) {
+          @include fontSize(24px)
+        }
+      }
+
+      &_categories {
+        opacity: .75;
+        @media (max-width: $bureau) {
+          width: 50%;
+        }
+      }
+
+      .bouton {
+        position: absolute;
+        width: max-content;
+        padding: 10px 20px;
+        right: 1rem;
+        bottom: 1rem;
+      }
+
+      @media (min-width: $bureau) {
+        &_titre {
+          width: 75%;
+          @include fontSize(24px);
+          line-height: 1.5;
+        }
+
+        &_auteurs {
+          padding-bottom: 1rem;
+        }
+
+        &_prix {
+          top: 10%;
+          right: 15%;
+        }
+
+        .bouton {
+          position: absolute;
+          right: 2rem;
+          bottom: 2rem;
+          width: auto;
+        }
+
+        //&:after, &_selected:after  {
+        &:after {
+          content: '';
+          position: absolute;
+          top: -24px;
+          right: 3%;
+          width: 11.5%;
+          height: 90px;
+          background: url("../images/signet--corail.svg") no-repeat 0 0 / contain;
+        }
+      }
+    }
+  }
+
+
+  /* --------------------------------------------- */
+  /* NOUVEAUTÉS */
+  /* --------------------------------------------- */
+  .nouveautes {
+    background: $beige--25;
+    @media (min-width: $bureau) {
+      margin-top: 10rem;
+      padding-bottom: 5rem;
+    }
+
+    // h2
+    &__couleurH2 {
+      background: $blanc;
+      @media (min-width: $bureau) {
+        background: linear-gradient(90deg, transparent 50%, $beige 0);
+      }
+    }
+
+    &__nomSection {
+      .h2Accueil {
+        background: $beige;
+        &:after {
+          background: url("../images/triforce--beige.svg") no-repeat 0 0 / contain;
+        }
+      }
+      @media (min-width: $bureau) {
+        .h2Accueil {
+          background: transparent;
+          width: span(4 of 12) + gutter(12)*2;
+
+          &:after {
+            background: url("../images/triforce--beige-pale.svg") no-repeat 0 0 / contain;
+          }
+        }
+      }
+    }
+
+    // lien pour voir tous les ...
+    &__lienVoirTous {
+      background: $beige--25;
+    }
+
+    @media (min-width: $bureau) {
+      .lienVoirTous__conteneur {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background: $beige;
+        text-align: right;
+      }
+    }
+
+    // les livres
+    .livres {
+      overflow: hidden;
+      &__liste {
+        display: flex;
+        flex-flow: row nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        @media (max-width: $bureau) {
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+      }
+    }
+
+    // un seul livre (article)
+    .livre {
+      transition: all .2s ease-in-out;
+      width: span(2 of 4) + gutter(4);
+      margin: 40px 0 120px gutter(4);
+      @include shadow--actualite;
+
+      &:after {
+        background: url("../images/signet--beige.svg") no-repeat 0 0 / contain;
+      }
+
+      &:hover, &:focus {
+        box-shadow: 0 2px 14px -3px rgba(0, 0, 0, 0.3);
+      }
+
+      // ul des informations du livre
+      &__desc {
+        border-top: 3px solid $grisPale;
+      }
+
+      &:last-of-type .livre__image{
+        margin-right: gutter(4)*2;
+      }
+    }
+  }
+
+
+
+  /* --------------------------------------------- */
+  /* ACTUALITÉS */
+  /* --------------------------------------------- */
+  .actualites {
+
+      // h2
+    @media (min-width: $bureau) {
+      &__couleurH2 {
+        background: linear-gradient(90deg, transparent 50%, $turquoise--25-solid 0);
+      }
+    }
+
+    // h2 Mobile
+    &__nomSection {
+      .conteneur {
+        margin: 0;
+      }
+      .h2Accueil {
+        background: $turquoise;
+        &:after {
+          background: url("../images/triforce--turquoise.svg") no-repeat 0 0 / contain;
+        }
+      }
+
+      // h2 Table
+      @media (min-width: $bureau) {
+        .h2Accueil {
+          min-width: span(9 of 12);
+          padding-left: span(1 of 12) + gutter(12);
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 100px;
+            background: url("../images/triforce--blanc.svg") no-repeat 0 0 / contain;
+          }
+        }
+      }
+
+      // h2 Tablette
+      @media (min-width: $bureau) AND (max-width: 1120px) {
+        .h2Accueil {
+          min-width: span(7 of 12);
+        }
+      }
+    }
+
+    // lien pour voir tous les ...
+    &__lienVoirTous {
+      background: $turquoise--25-solid;
+    }
+    @media (min-width: $bureau) {
+      .lienVoirTous__conteneur {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+      }
+    }
+
+    // articles d'acualités
+    &__article {
+      margin: 20px 0 30px;
+    }
+
+    &__img {
+      position: relative;
+      width: span(4 of 4);
+      padding: 0 10px;
+      overflow: hidden;
+        img {
+          vertical-align: bottom;
+          border-radius: 2px 2px 0 0;
+          @include shadow--actualite;
+        }
+
+      &:before, &:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 34px;
+        height: 20px;
+        bottom: -16px;
+        filter: brightness(0.9);
+      }
+
+      &:after {
+        transform: rotate(135deg);
+        right: 0;
+        background: url("../images/triforce--blanc.svg") no-repeat 0 0 / contain;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+        left: 0;
+        background: url("../images/triforce--blanc.svg") no-repeat 0 0 / contain;
+      }
+    }
+
+    &__contenu {
+      background: $blanc;
+      @include shadow--actualite;
+    }
+
+    &__titre {
+      margin: 0;
+      padding: 2rem 10px;
+      @media (min-width: $bureau) {
+        padding: 3rem 20px .5rem;
+      }
+    }
+
+    &__date {
+      @include fontSize(14px);
+      font-style: italic;
+      text-transform: capitalize;
+      color: $marine;
+    }
+
+    &__footer, &__date, &__texte {
+      padding: 0 10px;
+      @media (min-width: $bureau) {
+        padding: 0 20px;
+      }
+    }
+
+    &__footer {
+      position: relative;
+      background: $turquoise--25  url("../images/lireSuite.svg") no-repeat center right / contain;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      @include fontSize(12px);
+
+      @media (min-width: $bureau) {
+        @include fontSize(14px);
+      }
+    }
+
+    &__suiteA {
+      min-width: 70px;
+      margin: 0 15px;
+
+      @media (min-width: $bureau) {
+        min-width: 80px;
+      }
+    }
+
+    // placement flex en table
+    @media (min-width: $bureau) {
+      &__flex {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+      }
+
+      &__article {
+        max-width: 520px;
+        width: span(6 of 12);
+        margin: 60px 0;
+
+        &:first-of-type {
+          margin-right: gutter(12);
+        }
+      }
+
+      &__img {
+        max-height: 400px;
+      }
+    }
+
+    @media (min-width: $bureau) {
+      margin: 6rem 0;
+    }
+  }
+}

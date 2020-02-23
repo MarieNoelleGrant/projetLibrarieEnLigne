@@ -1,0 +1,188 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ * @author Yves Hélie - yves.helie@cegep-ste-foy.qc.ca
+
+ * TABLE DES MATIÈRES
+ ** Décrire l'animation
+ ** Foncer l'arrière-plan de la fenêtre modale
+ *** Styles pour le conteur de la fenêtre
+ ** Styles pour l'en-tête de la fenêtre modale
+ ** Styles pour le contenu de la fenêtre
+ *** Général
+ *** Chaque session
+
+*/
+
+
+/* Décrire l'animation */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-75%);
+  }
+  85% {
+    transform: translateY(2%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+/* Foncer l'arrière-plan de la fenêtre modale */
+.boiteModale {
+  // Styles pour le contour de la fenêtre
+  position: absolute;
+  z-index:100;
+  top: 80px;
+  right: 0;
+  animation-name: zoomIn;
+  animation-duration: .6s;
+  animation-timing-function: ease-in-out;
+
+  @media(max-width:$bureau) {
+    position:fixed;
+  }
+  @media(min-width:$bureau) {
+    top: -140px;
+  }
+  @media(min-width:1050px) {
+    top: -155px;
+  }
+
+  &__dialogue {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    position: relative;
+    background-color: $blanc;
+    padding: 10px;
+    border: solid 8px $corail;
+    border-radius: 8px;
+    @include shadow--input;
+    &:before {
+      content: "";
+      background: url('../images/triforce--corail.svg') no-repeat center / contain;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      transform: rotate(270deg);
+      right: 40px;
+      top: -40px;
+      z-index: 100;
+    }
+    @media (min-width:$bureau) {
+      width: 500px;
+      margin: 0;
+      margin-right: -5px;
+      &:before {
+        right: 7px;
+      }
+    }
+  }
+  // Styles pour l'entête de la fenêtre modale
+  &__entete {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px transparentize($charcoal, 0.6);
+    margin-bottom: 20px;
+    &_titre {
+      font-family: $fonteSecondaire;
+      font-weight: 300;
+      width: fit-content;
+      margin: 0;
+      padding-bottom: 6px;
+      @media(min-width:$bureau) {
+        @include fontSize(20px);
+      }
+    }
+    &_icone {
+      display: inline-block;
+      width: fit-content;
+      .icone {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+  &__fermer {
+    width: fit-content;
+  }
+
+  // Styles pour le contenu de la fenêtre
+  // Général
+  &__contenu {
+    display: grid;
+    grid-template-columns: span(1 of 4)+gutter(4)*2 62%;
+    grid-column-gap: gutter(4);
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 20px;
+    @media (min-width:$bureau) {
+      grid-template-columns: 30% 65%;
+      grid-column-gap: gutter(12)*2;
+    }
+  }
+  // Chaque section
+  &__image {
+    img {
+      @include shadow--nouveaute;
+    }
+    @media(min-width:600px) {
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
+  }
+  &__contenuTexte {
+    .h3 {
+      //font-weight: 500;
+      margin-top: 0;
+      color: $charcoal;
+      &:first-of-type {
+        margin-bottom: 4px;
+      }
+      @media(min-width:$bureau) {
+        @include fontSize(18px);
+        line-height: 22px;
+        &:first-of-type {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  &__btnSuppression {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    .icone {
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+    }
+  }
+
+  &__actions {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    //margin: 0 10px;
+    .bouton__retour {
+      display:flex;
+      flex-flow:row nowrap;
+      align-items: center;
+      .icone {
+        margin-right: 10px;
+        height: 16px;
+        width: 16px;
+      }
+    }
+    @media(min-width:600px) {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      align-items: center;
+    }
+  }
+}

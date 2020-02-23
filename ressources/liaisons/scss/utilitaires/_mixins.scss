@@ -1,0 +1,105 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+ *
+ * ----------------------------
+ * TABLE DES MATIÈRES - MIXINS
+ * ----------------------------
+ * base (BoxSizing, Clearfix)
+ * accessibilité
+ * typographie
+ * shadows
+ */
+
+
+
+/******** Utilitaires de base (BoxSizing, Clearfix) *********/
+/* BoxSizing */
+@mixin border-box-sizing{
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Clearfix: pour contrer le problème des enfants flottants*/
+@mixin clearfix {
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+.cf{
+  @include clearfix;
+}
+
+/******** Utilitaires pour accessibilité *********/
+// Hide only visually, but have it available for screenreaders:
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  // Extends the .visuallyhidden class to allow the element to be focusable
+  // when navigated to via the keyboard: https://www.drupal.org/node/897638
+  &.focusable:active,
+  &.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: normal;
+    width: auto;
+  }
+}
+.visuallyhidden,
+.screen-reader-only{
+  @include visuallyhidden;
+}
+
+
+
+/******** Utilitaires pour typographie *********/
+// Fonction pour convertir une valeur de font-size en pixels à son équivalent rem
+@function calculateRem($size) {
+  $remSize: $size / 10px;
+  @return #{$remSize}rem;
+}
+// Mixin qui inclus la solution de repli en pixel suivi par la valeur calculée en rem
+@mixin fontSize($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+//Pour UTILISER:
+//@include fontSize(15px);
+
+
+
+/* Utilitaire de mise en page */
+@mixin hardReset{
+  margin:0;
+  padding:0;
+}
+
+/** SHADOWS **/
+@mixin shadow--nouveaute {
+  box-shadow: 0 0 10px rgba(168, 168, 168, 0.35);
+}
+@mixin shadow--actualite {
+  box-shadow:  0 0 5px rgba(0, 0, 0, 0.25);
+}
+@mixin shadow--text {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+@mixin shadow--input {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+}

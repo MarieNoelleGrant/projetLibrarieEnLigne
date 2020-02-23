@@ -1,0 +1,26 @@
+#Le # au début d'une ligne défini un commentaire
+
+#Fichiers cachés créés par Mac OS
+.DS_Store
+Icon?
+
+#Dossier caché créé par PHPStorm
+.idea/
+
+#Dossier des dépendances
+node_modules/
+vendor/
+
+#Dossier caché de fichiers temporaires créé par sass
+.sass-cache/
+
+#Dossiers de compilation
+public/liaisons/css/
+!public/liaisons/js/interactions.js
+public/liaisons/images/couvertures
+
+#Autres fichiers
+package-lock.json
+composer.lock
+ressources/cache/
+gulpfile.js

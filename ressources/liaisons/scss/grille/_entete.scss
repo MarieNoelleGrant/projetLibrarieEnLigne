@@ -1,0 +1,480 @@
+/**
+ * @file Styles de l'entête - attention, il y a de grandes différences entre le mobile et le table
+ * @author Christine Daneau-Pelletier
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Entête
+ * ---------------------------------------------------------
+ * STYLES GÉNÉRAUX
+ * MENU
+ * LOGO - LIEN ACCUEIL
+ * MENU SECONDAIRE
+ * QUICK LINKS EN MENU MOBILE
+ * BANNIÈRE
+ * RECHERCHE ET SES OPTIONS DE FILTRE
+ * UL DU AJAX DANS LA RECHERCHE
+ */
+
+/*-----------------------------------*/
+/* STYLES GÉNÉRAUX */
+/*-----------------------------------*/
+@media (max-width: $bureau) {
+  .entete .conteneur {
+    margin: 0;
+  }
+
+  .js .entete {
+    position: fixed;
+  }
+
+  .entete {
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.navLien {
+  display: inline-block;
+}
+
+.mobileHeader {
+  background: $grisPale;
+}
+
+// cacher la recherche
+.cache {
+  z-index: -1;
+  animation-name: cacher;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
+
+  &--hold {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes cacher {
+  from {transform: translateY(0)}
+  to {transform: translateY(-100%)}
+}
+
+/*-----------------------------------*/
+/* MENU (surtout mobile) */
+/*-----------------------------------*/
+.entete {
+
+  // ajustement du bouton--lien dans l'entête
+  .bouton--lien {
+    font-weight: 300;
+    @media(min-width:$bureau) {
+      &:after {
+        background: linear-gradient(to right, transparent 300px, $corail 0);
+        background-size: 600px;
+      }
+
+      &:hover, &:focus, &.active {
+        &:after {
+          background-position-x: 300px;
+        }
+      }
+
+      &.active {
+        &:after {
+          height: 4px;
+        }
+      }
+    }
+    &.panierPlein{
+      font-weight: 500;
+    }
+  }
+  .panier {
+    position:relative;
+    &__nbItems {
+      background: url(../images/rond_panier.svg) no-repeat 0 0/contain;
+      width: 26px;
+      height: 26px;
+      display: inline-block;
+      text-align: center;
+      line-height: 1.6;
+      font-weight: 400;
+      @include fontSize(16px);
+      color: $charcoal;
+      position: absolute;
+      right: 0;
+      top: -2px;
+      @media(min-width:$bureau) {
+        width: 18px;
+        height: 18px;
+       @include fontSize(11px);
+        right: -4px;
+        top: -3px;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  .menu {
+    @include fontSize(20px);
+
+    &__btnMenu {
+      border: 0;
+      background: url("../images/icones/menuX.svg") no-repeat 0 0 / contain;
+      margin: 15px 10px;
+      outline: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &--ferme {
+        background-image: url(../images/icones/menu.svg);
+      }
+
+      @media (min-width: $bureau) {
+        display: none;
+      }
+    }
+
+    &__liste {
+      transition: all .2s ease-in-out;
+      margin: 0;
+      border-top: 3px solid $gris;
+      height: 368px;
+      opacity: 1;
+
+      &--ferme {
+        border: 0;
+      }
+
+      @media (max-width: $bureau) {
+        &--ferme {
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+        }
+      }
+
+      &_item {
+        border-bottom: 1px solid $gris;
+
+        .icone {
+          margin-right: 10px;
+        }
+
+        a:hover, a:focus {
+          outline: transparent;
+        }
+      }
+    }
+
+    /* Liens de la navigation */
+    &__lien {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      @media (max-width: $bureau) {
+        padding: 8px 10px;
+      }
+    }
+
+
+    /* Menu principal table */
+    /*-----------------------------------*/
+    @media (min-width: $bureau) {
+      &__liste, &__liste_item {
+        border: 0;
+      }
+
+      &__liste {
+        display: flex;
+        justify-content: space-around;
+        height: auto;
+        letter-spacing: 0.25px;
+        text-transform: uppercase;
+
+        &_item a {
+          transition: all .5s ease-in-out;
+        }
+      }
+    }
+
+    // tablette
+    @media (min-width: $bureau) AND (max-width: 1050px) {
+      &__liste_item a {
+        @include fontSize(14px);
+      }
+    }
+
+    /* Menu secondaire mobile  (deux items) */
+    /*-----------------------------------*/
+    &__secondaire {
+      @include fontSize(16px);
+      border-bottom: 1px solid $gris;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+
+      .icone {
+        width: 25px;
+        height: 25px;
+      }
+
+      .menu__lien {
+        padding: 0 15px;
+      }
+    }
+  }
+
+  /*-----------------------------------*/
+  /* LOGO - LIEN ACCUEIL */
+  /*-----------------------------------*/
+  .logo {
+    .navLien {
+      display: flex;
+    }
+
+    &__lien {
+      transition: transform 0.25s cubic-bezier(0.43, 0, 0.17, 1.55);
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: gutter(12)*2;
+
+      &:hover, &:focus {
+        transform: translateX(5px);
+        outline: none;
+      }
+    }
+
+    &__nomSite {
+      padding-bottom: 4px;
+      font: 900 56px $fontePrimaire;
+      color: $marine;
+      line-height: 80px;
+      @media (max-width: 1140px) {
+        @include fontSize(46px)
+      }
+    }
+
+    &__img {
+      max-height: 65px;
+    }
+  }
+}
+
+/* placement du logo avec la recherche (table) */
+/*---------------------------------------------*/
+@media (min-width: $bureau) {
+  .tableflex {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 2rem;
+    background: linear-gradient(to left, $blanc 45px, $grisUltraPale 0);;
+  }
+
+  .logo {
+    width: span(4 of 12) + gutter(12);
+  }
+
+  .recherche {
+    width: span(8 of 12);
+  }
+}
+
+
+/*-----------------------------------*/
+/* MENU SECONDAIRE */
+/*-----------------------------------*/
+.menuSecondaire {
+  background: $grisPale;
+
+  &__liste {
+    display: flex;
+    justify-content: flex-end;
+
+    &_item {
+      margin: 8px 20px;
+      z-index: 2;
+    }
+  }
+
+  .icone {
+    width: 33px;
+    height: 33px;
+    &Langue, &Deconnexion {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .menu__lien:hover, .menu__lien:focus {
+    outline: none;
+    .bouton--lien {
+      &:after {
+        background-position-x: 300px;
+      }
+    }
+  }
+}
+
+
+
+/*-----------------------------------*/
+/* QUICK LINKS EN MENU MOBILE */
+/*-----------------------------------*/
+@media (max-width: $bureau) {
+  // GRID //
+  .navMobileHeader {
+    min-height: 50px;
+    margin-right: 55px;
+    margin-left: 10px;
+    padding: 10px 0 5px;
+    display: grid;
+    grid-template-columns: 1fr 45px 45px;
+
+    @media (min-width: $mobile) {
+      grid-template-columns: 1fr 55px 55px;
+    }
+    align-items: center;
+
+    .icone {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+
+/*------------------------------------*/
+/* RECHERCHE ET SES OPTIONS DE FILTRE */
+/*------------------------------------*/
+.recherche {
+  position: relative;
+
+  &__form {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 2rem;
+    padding: 10px;
+    background: $gris;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 10px;
+      height: 100%;
+
+      @media (min-width: $bureau) {
+        width: 45px;
+      }
+    }
+
+    @media (min-width: $bureau) {
+      margin: 0;
+      padding: 20px 60px;
+
+      &:before {
+        left: 0;
+        background: url("../images/triforce--gris.svg") no-repeat 0 0 / contain;
+        filter: brightness(1.115);
+      }
+
+      &:after {
+        right: 0;
+        background: $blanc url("../images/triforce--gris.svg") no-repeat 0 0 / contain;
+      }
+    }
+  }
+
+  &__filtres {
+    margin-right: 8px;
+    padding-left: 5px;
+    background: $grisUltraPale;
+    @include fontSize(14px);
+
+    @media (min-width: $bureau) {
+      height: 42px;
+      @include fontSize(16px);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    background: $grisUltraPale;
+
+    @media (min-width: $bureau) {
+      height: 42px;
+      padding: 0 48px 0 10px;
+    }
+  }
+
+  &__bouton {
+    position: absolute;
+    top: calc(50% - 14px);
+    right: 0;
+    margin-right: 20px;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+
+    .icone {
+      width: 25px;
+      height: 25px;
+    }
+
+    @media (min-width: $bureau) {
+      margin-right: 70px;
+      top: calc(50% - 12px);
+    }
+  }
+
+
+  /*------------------------------------*/
+  /* UL DU AJAX DANS LA RECHERCHE */
+  /*------------------------------------*/
+  &__resultats {
+    z-index: 20;
+    position: absolute;
+    top: 52px;
+    margin: 0;
+    border-radius: 0 0 2px 2px;
+    width: 100%;
+    background: $grisUltraPale;
+    @include shadow--input;
+
+    &_item {
+      padding: 8px 10px;
+      border-top: 1px solid $grisPale;
+
+      &:hover, &:focus {
+        background: $corail--25;
+      }
+    }
+
+    @media (min-width: $bureau) {
+      top: 62px;
+      left: 212px;
+      width: calc(100% - 272px);
+
+      &_item {
+        padding: 4px 10px;
+      }
+    }
+  }
+}

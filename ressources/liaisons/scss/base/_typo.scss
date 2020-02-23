@@ -1,0 +1,136 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Typographie responsive (Mobile First)
+ * ---------------------------------------------------------
+ * Base décimale
+ * Hiérarchie responsive
+ */
+
+
+
+/** Base décimale **/
+html{
+  font-size: 62.5%;
+}
+body, .p {
+  /* 16px pour toutes les largeurs d'écran */
+  @include fontSize(16px);
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+  font-family: $fonteSecondaire;
+  letter-spacing: 0.04em;
+  font-weight: 300;
+  color: $charcoal;
+}
+@media (min-width: $bureau) {
+  body, .p {
+    line-height: 1.5;
+  }
+}
+@media (min-width: $large) {
+  body, .p {
+    line-height: 1.75;
+  }
+}
+
+h1, .h1 {
+  color: $marine;
+}
+
+h1, .h1,
+h2, .h2{
+  font-family: $fontePrimaire;
+}
+
+h3, .h3,
+h4, .h4{
+  font-family: $fonteSecondaire;
+}
+
+/** Hiérarchie responsive **/
+/*  plus proche = plus petit  &  plus loin = plus grand */
+
+/* TITRES NIVEAU 1 */
+h1,
+.h1 {
+  @include fontSize(36px);
+  font-weight: 900;
+}
+@media (min-width: $bureau) {
+  h1,
+  .h1 {
+    @include fontSize(56px);
+  }
+}
+@media (min-width: $large) {
+  h1,
+  .h1 {
+    @include fontSize(56px);
+  }
+}
+
+
+/* TITRES NIVEAU 2 */
+h2,
+.h2 {
+  @include fontSize(22px);
+  font-weight: 900;
+}
+@media (min-width: $bureau) {
+  h2,
+  .h2 {
+    @include fontSize(32px);
+  }
+}
+@media (min-width: $large) {
+  h2,
+  .h2 {
+    @include fontSize(32px);
+  }
+}
+
+
+/* TITRES NIVEAU 3 */
+h3,
+.h3 {
+  @include fontSize(18px);
+  font-weight: 500;
+}
+@media (min-width: $bureau) {
+  h3,
+  .h3 {
+    @include fontSize(20px);
+  }
+}
+@media (min-width: $large) {
+  h3,
+  .h3 {
+    @include fontSize(24px);
+  }
+}
+
+
+/* TITRES NIVEAU 4 */
+h4,
+.h4 {
+  @include fontSize(18px);
+  font-weight: 500;
+}
+@media (min-width: $bureau) {
+  h4,
+  .h4 {
+    @include fontSize(18px);
+    font-weight: 400;
+  }
+}
+
+@media (min-width: $large) {
+  h4,
+  .h4 {
+    @include fontSize(20px);
+  }
+}

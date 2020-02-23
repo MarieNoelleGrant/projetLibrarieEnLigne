@@ -1,0 +1,706 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ *
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * RÈGLES GÉNÉRALES DE LA PAGE FICHE
+ * -------------------------------------------------------------------------------------------------
+ * SECTION INFOS PRINCIPALES
+ *  1. Organisation générale de la section
+ *
+ *  2. Régles spécifiques pour les informations principales
+ *    a. Titres (principal et secondaire) + Catégories
+ *    b. Image de couverture
+ *    c. Noms des Auteurs + accroche Avis
+ *    d. Prix et ajout au panier
+ * -------------------------------------------------------------------------------------------------
+ * SECTION INFOS SECONDAIRES
+ *  1. Organisation générale de la section
+ *    a. Règles spécifiques pour les onglets (par défault ouverts sans javascript)
+ *    b. Règles pour organiser le contenu de chaque onglet
+ *
+ *  2. Régles spécifiques pour chaque section
+ *    a. Pour mise en forme de la section Prix Remportés
+ *    b. Pour mise en forme de la section des Mentions
+ *    c. Pour la mise en forme de la section Collection
+ **/
+
+.fiche {
+  // *** RÈGLES GÉNÉRALES DE LA PAGE FICHE *********************************************************
+  .conteneur__flex {
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    // align-items défini selon le contexte
+  }
+  // *** SECTION INFOS PRINCIPALES *********************************************************
+  // 1. Organisation générale de la section
+  &__infosPrincipales {
+    width: span(4 of 4);
+    background-color: $blanc;
+    box-shadow: 0 0 8px transparentize($noir, 0.65);
+    padding-bottom: 1px;
+    position: relative;
+
+    .conteneur__flex {
+      align-items: flex-end;
+    }
+
+    // Ajout de l'icone coup de coeur si c'est le cas
+    &_coupDeCoeur {
+      &:before {
+        content:"";
+        width: 57px;
+        height: 58px;
+        position: absolute;
+        right: 10px;
+        top: -12px;
+        background: url("../images/icones/coupDeCoeur.svg") no-repeat 0 0 / contain;
+        z-index: 3;
+        @media(min-width:$bureau) {
+          width: 100px;
+          height: 100px;
+          top: -21px;
+          right: 20px;
+        }
+      }
+    }
+  }
+
+  // 2. Régles spécifiques pour les informations principales
+  .infosPrincipales {
+    margin-top: 30px;
+    @media (min-width:1000px) {
+      position: relative;
+    }
+    // a. Titres (principal et secondaire) + Catégories + Texte "Coup de coeur" (si applicable)
+    &__titreCategorie {
+      margin: 0 gutter(4) 0 8px;
+      padding-top: 1px;
+      @media (min-width:1000px) {
+        width: span(6 of 12);
+        margin-left: 18px;
+      }
+    }
+    &__titre {
+      line-height: 120%;
+      //max-width: 100%;
+      //@media(min-width:$bureau) {
+      //  max-width: span(3 of 4) + gutter(4);
+      //}
+    }
+    &__sousTitre {
+      margin-top: -10px;
+      font-family: "Playfair Display", Times, serif;
+      font-weight: 400;
+      @include fontSize(20px);
+      @media(min-width:$bureau) {
+        margin-top: -26px;
+        @include fontSize(28px);
+      }
+    }
+    &__coupCoeur {
+      display: inline-flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      background-color: $marine--pale;
+      padding: 10px;
+      width: fit-content;
+      height: fit-content;
+      margin-right: 10px;
+      &_icone {
+        height: 20px;
+        width: 20px;
+      }
+      &_texte {
+        color: $blanc;
+        margin-left: 12px;
+        font-weight: 400;
+        @include fontSize(14px);
+      }
+    }
+    &__categories {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    .categories {
+      &__item {
+        background-color: $turquoise--pale;
+        padding: 10px 7px;
+        margin-bottom: 10px;
+        @include fontSize(14px);
+        width: fit-content;
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+
+    // b. Image de couverture
+    &__image {
+      width: span(2 of 4);
+      margin-left: 8px;
+      @include shadow--nouveaute;
+      @media(min-width: $bureau) {
+        min-width: 360px;
+      }
+      @media (min-width:1000px) {
+        width: span(4 of 12);
+        position: absolute;
+        top: 20px;
+        right: span(1 of 12)/2;
+        z-index: 2;
+        max-height: 90%;
+        overflow: hidden;
+        // *** Régles spécifique pour styler l'image du placeholder dans la fiche
+        &_placeholder {
+          width: auto;
+          max-height: 90%;
+        }
+      }
+    }
+
+    // c. Noms des Auteurs + accroche Avis
+    &__auteursAvis {
+      width: span(2 of 4);
+      @media(min-width:1000px) {
+        margin-left: 18px;
+      }
+    }
+    .accrocheAvis {
+      &__etoiles {
+        @media(min-width:$bureau) {
+          margin-left: -4px;
+        }
+        .icone {
+          width: 24px;
+          height: 24px;
+          @media(max-width:$mobile) {
+            width: 20px;
+            height: 20px;
+          }
+          @media(min-width:$bureau) {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+      &__ancre {
+        @media(max-width:$mobile) {
+          @include fontSize(12px);
+        }
+      }
+    }
+
+    // d. Prix et ajout au panier
+    &__ajoutPanier {
+      background-color: $grisPale;
+      padding: 25px 0;
+      margin: 20px 0;
+      position: relative;
+      z-index: 1;
+      &:before {
+        content: "";
+        background-color: $grisPale;
+        position: absolute;
+        top: 0;
+        left: -10px;
+        width: calc(100% + 20px);
+        height: 100%;
+        z-index: -1;
+        @media(min-width: $bureau) {
+          width: calc(100% + 60px);
+          left: -30px;
+        }
+      }
+      .bouton {
+        @media(min-width:$bureau) {
+          margin-left: 18px;
+          margin-top: 20px;
+          min-width: 270px;
+        }
+        & .icone {
+          width: 30px;
+          height: 30px;
+          @include shadow--text;
+        }
+        :disabled {
+          & .icone {
+            background: url("../images/icones/panier--plus.svg") no-repeat center / contain;
+            opacity: 0.7;
+          }
+          & .bouton--principal_texte {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    .ajoutPanier {
+      &__format {
+        width: span(4 of 4) - gutter(4);
+        margin: 10px auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        @media (min-width:$bureau) {
+          width: fit-content;
+          margin: 0 18px 10px;
+        }
+        &--choisi, &:hover, &:focus {
+          cursor: pointer;
+          .ajoutPanier__prix {
+            background-color: $corail;
+            color: $blanc;
+            @include shadow--text;
+          }
+        }
+      }
+      &__controle {
+        display:flex;
+        width: 100%;
+      }
+      &__prix, &__nomFormat {
+        display: inline-block;
+        padding: 18px 0;
+        text-align: center;
+        @media (max-width:$bureau) {
+          width: 100%;
+        }
+        @media (min-width:$bureau) {
+          padding: 10px 30px;
+        }
+      }
+      &__prix {
+        background-color: $corail--25;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+        @media (min-width:$bureau){
+          width: auto;
+        }
+      }
+      &__nomFormat {
+        background-color: $blanc;
+      }
+      .conteneurPanier {
+        @media(min-width: $bureau) {
+          width: span(10 of 12);
+          form {
+            display: flex;
+            flex-flow: row wrap;
+          }
+        }
+        @media(min-width:1000px) {
+          width: span(6 of 12);
+        }
+      }
+      &__msgChoixFormat {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        vertical-align: center;
+        justify-content: center;
+        .icone {
+          height: 18px;
+          width: 18px;
+          margin-right: 8px;
+        }
+        @media(min-width:$bureau) {
+          margin-left: 20px;
+        }
+        &.displayNone {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // *** SECTION INFOS SECONDAIRES *********************************************************
+  // 1. Organisation générale de la section
+  &__infosSecondaires {
+    .conteneur__flex {
+      align-items: center;
+    }
+  }
+
+  .infosSecondaires {
+    // a. Règles spécifiques pour les onglets (par défault ouverts sans javascript)
+    &__onglet {
+      background-color: $turquoise--pale;
+      padding: 15px 12px;
+      .icone--chevron {
+        @media(min-width:$bureau) {
+          display: none;
+        }
+      }
+      &_titre {
+        margin: 0;
+      }
+    }
+
+    // b. Règles pour organiser le contenu de chaque onglet
+    &__sousListe {
+      padding: 5px gutter(4)/2 35px;
+      border-bottom: solid 0.5px transparentize($charcoal, 0.25);
+      background-color: $blanc;
+      opacity: 1;
+      height: inherit;
+      transition: all 0.2s ease-in-out;
+    }
+    &__sousListeItem {
+      margin-bottom: 5px;
+      & p {
+        margin: 0;
+      }
+      &_titre {
+        font-weight: 500;
+        margin-bottom: 5px;
+        width: fit-content;
+        display: inline-block;
+      }
+      &_url {
+        margin-left: 5px;
+        @include fontSize(14px);
+      }
+      &_lien {
+        text-decoration: underline;
+        text-decoration-color: $corail;
+      }
+    }
+
+
+    &__listeItem {
+      @media(max-width:$bureau) {
+        &:first-of-type {
+          .infosSecondaires__sousListeItem:first-of-type {
+            &:after {
+              content:" ";
+              display: block;
+              width: span(3 of 4) + gutter(4)*2;
+              height: 7px;
+              margin: 20px auto 20px;
+              background: url("../images/icones/dot.svg") repeat-x bottom / contain;
+            }
+          }
+        }
+      }
+    }
+    // c. Régles spécifiques pour le format table
+    @media(min-width:$bureau) {
+      margin-bottom: 100px;
+      &__liste {
+        display: grid;
+        grid-template-columns: span(6 of 12) span(6 of 12);
+        grid-column-gap: gutter(12);
+        &_descSeule {
+          display: inline-block;
+          width: span(12 of 12);
+          .infosSecondaires__sousListe {
+            display: grid;
+            grid-template-columns: span(7 of 12) span(4 of 12);
+            grid-template-rows: 50px 50px 50px 1fr;
+            grid-column-gap: span(1 of 12);
+            //padding-bottom: 60px;
+          }
+          .infosSecondaires__sousListeItem {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            &:first-of-type {
+              grid-column-start: 1;
+              grid-column-end: 2;
+              grid-row-start: 1;
+              grid-row-end: 5;
+            }
+          }
+        }
+      }
+      &__listeItem {
+        width: 100%;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        &:first-of-type {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          @media (min-width:$bureau) {
+            grid-row-start: 1;
+            grid-row-end: 4;
+          }
+        }
+      }
+    }
+  }
+
+  // 2. Régles spécifiques pour chaque section
+  // a. Pour mise en forme de la section Prix Remportés
+  .prix {
+    &__infos {
+      //display: flex;
+      //flex-flow: column wrap;
+      margin-left: 10px;
+      margin-top: 20px;
+      padding-left: 20px;
+      position: relative;
+      border-left: solid 1px transparentize($charcoal, 0.75);
+    }
+    &__icone {
+      position: absolute;
+      top: 0;
+      left: -17px;
+      .icone {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    &__titre {
+      margin-top: 0;
+      padding-top: 6px;
+      font-weight: 500;
+    }
+    &__description {
+      word-break: break-word;
+    }
+  }
+
+  // b. Pour mise en forme de la section des Mentions
+  .mentions {
+    .infosSecondaires__sousListe {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    &__mention {
+      margin-top: 40px;
+      &:first-of-type {
+        margin-top: 20px;
+      }
+    }
+    &__citation {
+      position: relative;
+      z-index: 1;
+      // Ajout des icones de citation dans la section Mentions
+      &:before, &:after {
+        content:"";
+        display: inline-block;
+        position: absolute;
+        background: url("../images/icones/guillemet.svg") top left no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        z-index: -1;
+        opacity: 0.7;
+        top: -15px;
+        left: -30px;
+      }
+      &:after {
+        background-position: bottom right;
+        transform: rotate(180deg);
+        left: initial;
+        top: initial;
+        right: -30px;
+        bottom: -15px;
+        @media(min-width:$bureau) {
+          right: 0;
+        }
+      }
+    }
+    &__auteurNom {
+      display: inline-block;
+      font-weight: 500;
+      margin-top: 10px;
+      width: 100%;
+      cite {
+        font-weight: 500;
+      }
+    }
+    &__auteurDate {
+      font-weight: 400;
+    }
+  }
+
+  // c. Pour la mise en forme de la section Collection
+  .collection {
+    &__nom {
+      margin-top: 20px;
+      font-weight: 500;
+      display: block;
+      padding: 10px 0;
+    }
+  }
+
+  // *** SECTION AVIS D'AUTRES LECTEURS *********************************************************
+  // 1. Régles pour le titre + élément déco
+  .avisLecteurs {
+    background-color: $blanc;
+    position: relative;
+    margin-bottom: 80px;
+    @media(min-width:$bureau) {
+      position: relative;
+      background: linear-gradient(to right, $grisPale 33.3%, $blanc 33.3% 66.7%, $grisPale 66.7% 100%);
+    }
+    &:after {
+      content: "";
+      display: block;
+      width: calc(100% + 10px);
+      height: 70px;
+      background: url("../images/triforce--blanc.svg") no-repeat 0 0 / contain;
+      background-color: $marine;
+      @media(min-width:$bureau) {
+        width: span(5 of 12);
+        margin-left: calc(60% + 6px);
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 60px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      transform: rotate(135deg);
+      background: url(../images/triforce--marine.svg) no-repeat 0 0/contain;
+      filter: brightness(0.7);
+    }
+    &__titre {
+      color: $blanc;
+      background-color: $marine;
+      padding: 20px 0;
+      margin-left: -10px;
+      margin-bottom: 0;
+      position: relative;
+      @media(min-width:$bureau) {
+        min-width: 350px;
+        width: span(5 of 12);
+        margin-left: -14px;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 46px;
+        height: 100%;
+        transform: rotate(180deg);
+        background: url("../images/triforce--blanc.svg") no-repeat 0 0 / contain;
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: -10px;
+        width: 20px;
+        height: 20px;
+        transform: rotate(-45deg);
+        background: url(../images/triforce--marine.svg) no-repeat 0 0/contain;
+        filter: brightness(0.7);
+        @media (min-width:$bureau) {
+          left: 4px;
+        }
+      }
+      &_txt {
+        margin-left: 20px;
+      }
+    }
+    &__listeItem {
+      background-color: $blanc;
+      padding: 20px 10px;
+      &:nth-of-type(2) {
+        background-color: $grisPale;
+      }
+      @media(min-width:$bureau) {
+        width: span(4 of 12) + gutter(12);
+        padding: 30px 20px;
+        //margin: -70px 0;
+        background-color: $grisPale;
+        &:nth-of-type(2) {
+          background-color: $blanc;
+        }
+        .icone {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+    &__nomDate {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    &__boutonsLiens {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: space-around;
+      background-color: $blanc;
+      @media(min-width:$bureau) {
+        flex-flow: row nowrap;
+      }
+    }
+    &__liste {
+      @media(min-width: $bureau) {
+        display: flex;
+        flex-flow: row nowrap;
+      }
+    }
+    @media(min-width:$bureau) {
+      .bouton--lien {
+        position: absolute;
+      }
+      .ajouterUnAvis {
+        left: 20px;
+        bottom: 5px;
+      }
+      .voirAvis {
+        top: 5px;
+        right: 20px;
+      }
+    }
+  }
+}
+
+// *** INTERACTIVITÉ SANS JAVASCRIPT (spécifique) *********************************************************
+// Styles pour que les boutons radios du format dans la fiche se comportent bien sans javascript, sans nuire au fonctionnement avec javascript!
+body:not(.js) {
+  .fiche {
+    // Régles pour rendre les boutons radio visuels à l'interaction, même sans javascript
+    .infosPrincipales {
+      input:first-of-type:checked {
+        + label .ajoutPanier__prix {
+          background-color: $corail;
+          color: $blanc;
+          @include shadow--text;
+        }
+      }
+    }
+  }
+}
+// *** INTERACTIVITÉ AVEC JAVASCRIPT *********************************************************
+
+.js {
+  .fiche {
+    // 1. Onglets des informations secondaires en mobile
+    .infosSecondaires__listeItem {
+      &--ferme {
+        @media (max-width:$bureau) {
+          .infosSecondaires__sousListe {
+            opacity: 0;
+            height: 1px;
+            overflow: hidden;
+            padding-top: 0px;
+            padding-bottom: 0px;
+          }
+          .infosSecondaires__onglet {
+            background-color: $grisPale;
+          }
+        }
+      }
+    }
+    // Styles pour que les boutons radios soient invisibles si le javascript est activé
+    .ajoutPanier__format {
+      &_radio {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        @include visuallyhidden;
+      }
+    }
+  }
+}

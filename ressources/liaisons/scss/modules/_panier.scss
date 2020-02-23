@@ -1,0 +1,359 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ *
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * *** RÉGLES POUR L'ENTÊTE DU PANIER ***
+ * ** Régles pour la section qui résume le panier
+ * -------------------------------------------------------------------------------------------------
+ * *** RÉGLES SPÉCIFIQUES AUX ARTICLES DU PANIER ***
+ * ** Section du prix total d'un article
+ * -------------------------------------------------------------------------------------------------
+ * *** RÉGLES SPÉCIFIQUES À LA SECTION DU CUMULATIF DES COÛTS ***
+ * Styles pour le panier, si aucun item n'a été rajouté / si tout a été enlevé
+ **/
+
+// *** RÉGLES POUR L'ENTÊTE DU PANIER ***
+.panier {
+  &__titre {
+    margin-bottom: 0;
+  }
+  &__infoPrix {
+    display:flex;
+    margin-top: 10px;
+    flex-flow: row nowrap;
+    align-items: center;
+    .icone--info {
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+    }
+  }
+  // Régles pour la section qui résume le panier
+  &__recap {
+    background-color: $grisPale;
+    padding: 10px;
+    .bouton {
+      margin: 10px auto;
+      @media (min-width:$bureau) {
+        margin: 0;
+      }
+    }
+    @media (min-width:$bureau) {
+      padding-left: span(1 of 12)+gutter(12);
+      padding-right: span(1 of 12)+gutter(12);
+      display: grid;
+      grid-template-columns: span(6 of 12) span(6 of 12);
+      grid-column-gap: gutter(12);
+      a {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start:2;
+        grid-column-end:3;
+        align-self: center;
+        justify-self: end;
+      }
+    }
+  }
+  &__recapSection {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    padding: 10px 0;
+    .h3 {
+      margin: 0;
+      margin-right: 10px;
+    }
+    @media (min-width:$bureau) {
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+
+  // *** RÉGLES SPÉCIFIQUES AUX ARTICLES DU PANIER ***
+  &__item {
+    background-color: $blanc;
+    @include shadow--nouveaute;
+    padding: 10px 0;
+    margin: 30px 0;
+    @media(min-width:$bureau) {
+      max-width: 994px;
+      margin: 30px auto;
+    }
+  }
+  &__sousliste {
+    display: grid;
+    grid-template-columns: 25% 70%;
+    grid-column-gap: 5%;
+    grid-auto-rows: minmax(min-content, max-content);
+    &Item {
+      grid-column-start: 2;
+    }
+    @media(min-width:$bureau) {
+      grid-template-columns: span(2 of 10) span(5 of 10) span(3 of 10);
+      grid-column-gap: gutter(10);
+    }
+  }
+  .itemPanier {
+    &__image {
+      width: 100%;
+      grid-column-start: 1;
+      grid-column-end:2;
+      grid-row-start: 1;
+      grid-row-end: 6;
+      img {
+        @include shadow--nouveaute;
+      }
+      @media (min-width:$bureau) {
+        grid-row-end: 5;
+      }
+    }
+    &__titre {
+      padding-bottom: 2px;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      @media (min-width:$large) {
+        @include fontSize(30px);
+        line-height: 120%;
+      }
+    }
+    &__auteurs {
+      padding-bottom: 15px;
+      max-height: 100px;
+    }
+    &__prix {
+      @include fontSize(24px);
+      font-weight: 500;
+      display: flex;
+      flex-flow: column nowrap;
+      padding-bottom: 15px;
+      @media (min-width:$large) {
+        @include fontSize(28px);
+        line-height: 120%;
+      }
+      span {
+        &:first-of-type {
+          font-weight: 300;
+          @include fontSize(14px);
+        }
+      }
+    }
+    &__quantite {
+      display: flex;
+      flex-flow: row nowrap;
+      padding-bottom: 10px;
+      form .bouton {
+        margin-top: 10px;
+      }
+    }
+    &__btnRetirer {
+      margin-top: 10px;
+      .bouton--secondaire {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        .icone {
+          width: 22px;
+          height: 22px;
+          margin-right: 6px;
+        }
+        @media (min-width:$bureau) {
+          justify-content: center;
+          width: 100%;
+        }
+      }
+      @media(min-width:$bureau) {
+        grid-column-start:3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        justify-self: right;
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    // ** Section du prix total d'un article
+    &__total {
+      background-color: $turquoise--pale;
+      margin-top: 30px;
+      padding: 20px 12px;
+      padding-left: 0px;
+      width: 91%;
+      min-width: 200px;
+      max-width: 280px;
+      justify-self: end;
+      margin-right: -10px;
+      position: relative;
+      font-weight: 500;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      span {
+        justify-self: end;
+        &:first-of-type {
+          font-weight: 400;
+        }
+        @media(min-width:$bureau) {
+          align-self: center;
+        }
+      }
+      &:before {
+        content: "";
+        background: url(../images/triforce--blanc.svg) no-repeat right/contain;
+        width: 62px;
+        height: 62px;
+        position: absolute;
+        top: 0;
+        left: -30px;
+        @media(min-width:$bureau) {
+          width: 72px;
+          height: 72px;
+          left: -33px;
+        }
+      }
+      &:after {
+        content: "";
+        background: url(../images/triforce--turquoise.svg) no-repeat right/contain;
+        width: 15px;
+        height: 16px;
+        transform: rotate(-225deg);
+        position: absolute;
+        top: -13px;
+        right: -3px;
+        @media(min-width:$bureau) {
+          width: 8px;
+          height: 13px;
+          top: -9px;
+          right: 2px;
+        }
+      }
+      @media(min-width:$bureau) {
+        grid-column-start:3;
+        padding-right: 30px;
+        max-height: 74px;
+      }
+    }
+  }
+
+  // *** RÉGLES SPÉCIFIQUES À LA SECTION DU CUMULATIF DES COÛTS ***
+  &__resumeListe {
+    max-width: 450px;
+    margin-left: auto;
+    margin-bottom: 40px;
+    &Item {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      padding-top: 10px;
+      align-items: baseline;
+      grid-column-start:2;
+
+      :first-child {
+        text-transform: uppercase;
+      }
+      :last-child:not(form):not(button) {
+        font-weight: 400;
+        @include fontSize(18px);
+      }
+
+      &:last-child {
+        border-top: solid 1px transparentize($charcoal, 0.5);
+        padding-top: 20px;
+        margin-top: 20px;
+        font-weight: 400;
+        @include fontSize(20px);
+        align-items: baseline;
+        :last-child {
+          font-weight: 500;
+          @include fontSize(22px);
+        }
+      }
+
+      .choixLivraison {
+        &__inactif {
+          color: $grisPale;
+        }
+      }
+
+      span, div {
+        justify-self: end;
+        text-align: right;
+      }
+      div {
+        width: 100%;
+      }
+      form {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-self: end;
+        select {
+
+          margin: 10px 0;
+        }
+        button, select {
+          width: fit-content;
+          margin-left: auto;
+        }
+      }
+    }
+    @media (min-width:$bureau) {
+      margin: 0 auto;
+      max-width: 994px;
+      display: grid;
+      grid-template-columns: span(5 of 10) span(5 of 10);
+      grid-column-gap: gutter(10);
+    }
+  }
+
+  &__boutons {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    @media(min-width:$bureau) {
+      max-width: 994px;
+      flex-flow: row-reverse nowrap;
+      align-items: center;
+      margin: 60px auto 80px;
+    }
+  }
+
+  &__btnContinuer {
+    display: inline-block;
+    width: fit-content;
+    margin: 30px auto 40px;
+    @media(min-width:$bureau) {
+      margin: 0;
+      display: inherit;
+    }
+  }
+
+  &__btnPayer {
+    padding: 15px 0;
+    max-width: 450px;
+    @media(min-width:$bureau) {
+      padding: 14px 60px;
+      margin: 0;
+      max-width: none;
+      width: fit-content;
+    }
+  }
+
+  // Styles pour le panier, si aucun item n'a été rajouté / si tout a été enlevé
+  &__vide {
+    margin: 20px 0;
+    @include fontSize(20px);
+  }
+  section:first-of-type {
+    //margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+}
+
+.js {
+  .panier, .validation {
+    .bouton--js {
+      display: none;
+    }
+  }
+}

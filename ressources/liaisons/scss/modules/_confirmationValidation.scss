@@ -1,0 +1,219 @@
+/**
+ * @file Styles des pages de commande (validation et confirmation)
+ * @description Pour les recap de panier qui sont à gérer différemment
+ * @author Christine Daneau-Pelletier
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Pages de commande (validation et confirmation)
+ * ---------------------------------------------------------
+ * Styles communs
+ * Validation
+ * Confirmation
+ * *** Print
+ */
+
+
+/*-----------------------------------*/
+/* Styles communs */
+/*-----------------------------------*/
+.validation, .confirmation {
+  address {
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  .h3 {
+    margin-top: 0;
+  }
+
+  .panier {
+  @media(min-width:$bureau) {
+    &__sousliste{
+        grid-template-columns: span(3 of 10) span(4 of 10) span(3 of 10);
+        grid-column-gap: gutter(10);
+      }
+
+      .itemPanier {
+        &__titre  {
+          grid-column-start: 2;
+          grid-column-end: 4;
+        }
+
+        &__total:before {
+          content: "";
+          background: url(../images/triforce--blanc.svg) no-repeat right/contain;
+          width: 67px;
+          height: 64px;
+          position: absolute;
+          top: 0;
+          left: -33px;
+        }
+      }
+
+      &__resumeListe {
+        grid-template-columns: span(3 of 10) span(7 of 10);
+      }
+    }
+    @media(max-width:$bureau) {
+      &__resumeListeItem {
+        grid-template-columns: auto 35%;
+      }
+    }
+  }
+
+  @media (min-width: $large) {
+    h3,
+    .h3 {
+      @include fontSize(22px);
+    }
+  }
+}
+
+/*-----------------------------------*/
+/* Validation */
+/*-----------------------------------*/
+.validation {
+  @media(min-width:$bureau) {
+    .itemPanier__titre {
+      padding-right: 60px;
+    }
+
+    .itemPanier__btnRetirer {
+      display: flex;
+      justify-content: flex-end;
+
+      span {
+        @include visuallyhidden;
+      }
+      .bouton--secondaire {
+        width: auto;
+        padding: 10px 5px 10px 10px;
+      }
+    }
+  }
+
+  .infosFacturation, .panier {
+    h2 {
+      margin: 0 0 3rem;
+    }
+    h3 {
+      margin-top: 4rem;
+    }
+  }
+}
+
+
+/*-----------------------------------*/
+/* Confirmation */
+/*-----------------------------------*/
+.confirmation {
+  .msgBravo {
+    margin-bottom: 4rem;
+
+    &__icone {
+      float: left;
+      height: 65px;
+      width: 50px;
+      margin-right: gutter(12)*2;
+      @media(min-width:$bureau) {
+        height: 95px;
+        width: 80px;
+      }
+    }
+
+    &__no {
+      font-weight: 400;
+    }
+  }
+
+  .flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .adresseFacturation {
+    @media (max-width: 467px) {
+      margin-top: 3rem;
+    }
+    @media (max-width: 1065px) AND (min-width: 620px) {
+      margin-top: 3rem;
+    }
+
+    &__icone {
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin-right: 5px;
+    }
+  }
+
+  .adresse__contenu{
+    max-width: 235px;
+  }
+
+  .retour, .imprimer {
+    margin: 2rem 0 4rem;
+    display: flex;
+    align-items: center;
+    .bouton {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: $bureau) {
+  &__btn.flex {
+      flex-flow: column-reverse;
+      align-items: center;
+      .imprimer {
+        margin: 1rem 0;
+        width: 100%;
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+/* PRINT */
+/*-----------------------------------*/
+@media print {
+  footer, header, .imprimer, .retour, .panier__souslisteItem.itemPanier__total {
+    @include visuallyhidden
+  }
+  body {
+    padding: 0 80px;
+  }
+
+  .panier {
+    img{
+      display: none;
+    }
+
+    &__item {
+      box-shadow: none;
+      margin: 10px 0;
+      border-radius: 3px;
+      border: 2px solid $grisPale;
+      padding: 0 10px;
+      page-break-inside: avoid;
+    }
+
+    &__sousliste {
+      &Item {
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+    }
+
+    &__resumeListe {
+      padding-top: 10px;
+      page-break-inside: avoid;
+    }
+  }
+}

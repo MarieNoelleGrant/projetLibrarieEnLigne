@@ -1,0 +1,74 @@
+{
+    "prenom": {
+        "vide": "Vous devez entrer votre prénom",
+        "motif": "Il semble y avoir une erreur. Votre prenom doit commencer par une majuscule, et seuls les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "nom": {
+        "vide": "Vous devez entrer votre nom de famille",
+        "motif": "Il semble y avoir une erreur. Votre nom doit commencer par une majuscule, et seuls les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "telephone": {
+        "vide": "Vous devez entrer votre numéro de téléphone",
+        "motif": "Assurez-vous d'entrer seulement un numéro selon le format suivant : 4181234567."
+    },
+    "adresse": {
+        "vide": "Vous devez entrer votre adresse",
+        "motif": "Il semble y avoir une erreur. L'adresse doit commencer par le numéro civique, suivi de toutes les autres informations (numéro d'appartement, rue, boite postale, etc)."
+    },
+    "ville": {
+        "vide": "Vous devez entrer le nom de la ville ou du village",
+        "motif": "Il semble y avoir une erreur. Seuls les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "postal": {
+        "vide": "Vous devez entrer votre code postal",
+        "motif": "Le code postal doit respecter le format X1X 1X1, avec l'espace."
+    },
+    "provinces": {
+        "vide": "Veuillez sélectionner une province dans le menu déroulant.",
+        "motif": "Veuillez sélectionner une province dans le menu déroulant."
+    },
+    "courriel": {
+        "vide": "Vous devez entrer votre adresse courriel",
+        "motif": "Assurez-vous d'entrer une adresse courriel valide.",
+        "disponible": "Cette adresse courriel est déjà asscociée à un compte existant."
+    },
+    "mdp": {
+        "vide": "Vous devez entrer un mot de passe.",
+        "motif": "Votre mot de passe semble manquer des éléments essentiels à sa sécurité. Veuillez-vous référer à l'outil ci-bas."
+    },
+    "typePaiement": {
+        "vide": "Veuillez sélectionner un type de mode de paiement",
+        "motif": "Ce mode de payement n'est pas l'une des options. Veuillez sélectionner de nouveau parmi les options proposées."
+    },
+    "numero_carte": {
+        "vide": "Vous devez entrer le numéro d'une carte de crédit.",
+        "motif": "Le numéro de la carte doit être du format suivant : 1234 1234 1234 1234, ou encore, si Amex : 1234 1234 1234 123."
+    },
+    "numero_securite": {
+        "vide": "Vous devez entrer le numéro de sécurité de votre carte de crédit.",
+        "motif": "Le numéro de sécurité doit être composé de seulement trois chiffres."
+    },
+    "nom_complet": {
+        "vide": "Vous devez entrer votre nom complet tel qu'il apparait sur votre carte.",
+        "motif": "Il semble y avoir une erreur. Votre nom doit commencer par une majuscule, et seuls les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "mois_expiration": {
+        "vide": "Vous devez entrer le mois d'expiration de votre carte",
+        "motif": "Le mois choisi n'est pas l'une des options. Veuillez sélectionner de nouveau parmi les options proposées"
+    },
+    "annee_expiration": {
+        "vide": "Vous devez entrer l'année d'expiration de votre carte",
+        "motif": "L'annee choisi n'est pas l'une des options. Veuillez sélectionner de nouveau parmi les options proposées"
+    },
+    "dateComplete": {
+        "vide": "",
+        "motif": "La date entrée est déjà expirée. Veillez choisir une autre carte ou revérifier le mois et l'année s'il-vous-plait."
+    },
+    "connexion": {
+        "courriel": "Cette adresse courriel n'est associé à aucun compte client.",
+        "mdp": "Il semble y avoir une erreur dans votre mot de passe.",
+        "deconnexion": "Vous avez été déconnecté de la Librairie Traces.",
+        "connexion": "Votre compte a bien été créé. Vous pouvez maintenant vous connecter à la Librairie Traces !"
+    }
+}
+

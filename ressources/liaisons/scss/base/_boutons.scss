@@ -1,0 +1,126 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ * @author Marie-Pierre Cardinal Labrie <1463196@cegep-ste-foy.qc.ca>
+ * @author Christine Daneau Pelletier <christine.daneau.pelletier@gmail.com>
+**/
+
+/**
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * Boutons principaux
+ * Boutons secondaires
+ * Liens
+ * -----------------------------------------------
+ */
+
+.bouton {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  &--principal {
+    transition: transform .2s cubic-bezier(0.43, 0, 0.17, 1.75);
+    background: $degrade_corail;
+    color: $blanc;
+    font-weight: 500;
+    border-radius: 22px;
+    padding: 15px 18px;
+    border: none;
+    margin: 0 auto;
+    letter-spacing: 1px;
+    width: span(3 of 4)+gutter(4)*2;
+    @include shadow--text;
+    @include fontSize(16px);
+    text-transform: uppercase;
+
+    @media (min-width: $bureau) {
+      padding: 15px 20px;
+      width: span(3 of 12) - gutter(12);
+      margin: 0;
+    }
+
+    &:hover, &:focus {
+      transform: scale(1.025);outline: none;
+    }
+
+    &:disabled {
+      background: $blanc;
+      color: $noir;
+      text-shadow: none;
+      transition: none;
+      font-weight: 400;
+      &:hover, &:focus {
+        transform: none;
+      }
+      .icone {
+        background: url("../images/icones/panier--plus.svg") no-repeat center / contain;
+      }
+    }
+    .icone {
+      margin-right: 10px;
+    }
+  }
+
+  &--lien{
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    position: relative;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-weight: 400;
+    color: $charcoal;
+    .icone--plus {
+      filter: brightness(1);
+    }
+    &:after {
+      transition: all .3s ease-in-out;
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -15%;
+      border-radius: 3px;
+      width: 100%;
+      height: 2px;
+      background: $corail;
+    }
+
+    @media(min-width:$bureau) {
+      .icone--plus {
+        transition: all .3s ease-in;
+        filter: brightness(0);
+      }
+      &:after {
+        bottom: -10%;
+        background: linear-gradient(to right, $charcoal 300px, $corail 0);
+        background-size: 600px;
+      }
+
+      &:hover, &:focus {
+        outline: none;
+        .icone--plus {
+          filter: brightness(1);
+        }
+        &:after {
+          background-position-x: 300px;
+        }
+      }
+    }
+  }
+
+  &--secondaire {
+    border: solid 1px $corail;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: fit-content;
+    background-color: $blanc;
+    transition: all .2s cubic-bezier(0.43, 0, 0.17, 1.75);
+    &:hover, &:focus {
+      transform: scale(1.025);
+      //background-color: $corail--tresPale;
+    }
+  }
+}

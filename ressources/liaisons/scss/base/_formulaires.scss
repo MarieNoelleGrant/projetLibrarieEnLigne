@@ -1,0 +1,480 @@
+/**
+ * @file Styles des formulaires
+ * @author Christine Daneau-Pelletier
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - formulaires
+ * ---------------------------------------------------------
+ * Styles généraux
+ * *** Spécification select
+ * Erreurs
+ * Validations
+ * .formulaire
+ * Spécifications connexion et creer
+ * *** Navigation entre connexion et création
+ * Spécifications livraison / facturation / validation
+ * *** Boutons radios pour le type de paiement
+ * Liste à puce pour l'aide aux mots de passe
+ */
+
+
+/*-----------------------------------*/
+/* Styles généraux */
+/*-----------------------------------*/
+[type="text"], [type="email"], [type="password"] {
+  display: block;
+  border-radius: 2px;
+  border: 0;
+  height: 32px;
+  padding: 0 8px;
+  background: $blanc;
+  @include shadow--input();
+}
+
+.consigne {
+  width: 100%;
+  display: block;
+  @include fontSize(14px);
+  margin: 4px 0 2px;
+  opacity: .85;
+}
+
+select {
+  border: 2px solid $corail;
+  border-radius: 2px;
+  height: 32px;
+  background: $blanc;
+  @include shadow--input();
+}
+
+legend {
+  padding: 4rem 0 3rem;
+  transform: translateY(4rem);
+}
+
+/*-----------------------------------*/
+/* Erreurs */
+/*-----------------------------------*/
+.erreur, .formulaire select.erreur {
+  border: 1px solid #ff715b;
+}
+.msgErreur, .dispoCourriel {
+  color: #a72b18;
+}
+
+/*-----------------------------------*/
+/* Validations */
+/*-----------------------------------*/
+.ctnForm {
+  position: relative;
+  margin: 0 0 3rem;
+  @media (min-width: $bureau) {
+    margin: 0 0 4rem;
+  }
+
+  // icone de crochet quand c'est bon
+  .icone--crochet {
+    position: absolute;
+    top: 33px;
+    right: 7px;
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0px 0px 1px $turquoise);
+    @media (min-width: $bureau) {
+      top: 35px;
+    }
+  }
+
+  &.tel, &.codePostal {
+    .icone--crochet {
+      top: 56px;
+      right: initial;
+      left: 108px;
+      @media (min-width: $bureau) {
+        top: 60px;
+      }
+    }
+  }
+
+  &.provinces {
+    .icone--crochet {
+      right: initial;
+      left: 172px;
+    }
+  }
+}
+
+.ctnForm, .messageConnexion, .msgErreur {
+  .icone--erreur {
+    filter: drop-shadow(0px 0px 1px #e43500);
+    width: 28px;
+    height: 28px;
+    margin: 0 5px -8px 0;
+  }
+}
+
+.messageConnexion {
+  padding: 1rem 0 0;
+}
+
+/*-----------------------------------*/
+/* .formulaire */
+/*-----------------------------------*/
+.formulaire {
+  [type="text"], [type="email"], [type="password"] {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .groupeCouleur {
+    background: transparentize($beige, .55);
+    margin: 2rem 0;
+    border-radius: 3px;
+    border: 0;
+    padding: 2rem 20px;
+    @media (min-width: $bureau) {
+      padding: 4rem span(1 of 12);
+    }
+  }
+
+  .bouton {
+    margin: 3rem 0;
+    width: 100%;
+    height: 56px;
+    @media (min-width: $bureau) {
+      width: initial;
+      padding: 0 3rem;
+    }
+  }
+
+  /* Bureau */
+  @media (min-width: 620px) {
+    margin: 0 auto;
+    width: span(6 of 12);
+  }
+
+  @media (min-width: $large) {
+    line-height: 1.5;
+  }
+}
+
+/*-----------------------------------*/
+/* Spécification connexion et creer */
+/*-----------------------------------*/
+.connexion, .creer {
+  form.groupeCouleur {
+    @media (min-width: $bureau){
+      padding-bottom: 3rem;
+    }
+  }
+
+  select {
+    padding-right: 25px;
+  }
+
+  .tel__input {
+    width: 135px;
+  }
+
+  .achatSansCompte {
+    .bouton {
+    @media (min-width: $bureau) {
+        margin: 6rem auto;
+      }
+    }
+  }
+}
+
+.toggleMDP {
+  position: absolute;
+  width: fit-content;
+  top: -2px;
+  right: -2px;
+
+  &__label {
+    cursor: pointer;
+
+    &_tx {
+      transition: all .18s ease-in-out;
+      @include fontSize(14px);
+      opacity: .6;
+    }
+
+    &:hover, &:focus {
+      .toggleMDP__label_tx {
+        opacity: 1;
+      }
+    }
+  }
+
+  .icone--oeil {
+    margin-bottom: -8px;
+    width: 32px;
+    height: 26px;
+  }
+}
+
+/* Navigation entre connexion et création */
+.pasCompte, .dejaCompte {
+  text-align: center;
+}
+
+.achatSansCompte, .pasCompte, .dejaCompte {
+  padding: 1rem 10px;
+  @media (min-width: 620px) {
+    padding: 2rem span(1 of 12);
+  }
+}
+
+.achatSansCompte {
+  padding: 2rem 0 4rem;
+  @media (min-width: $bureau) {
+    padding:  2rem 0 4rem;
+  }
+  @media (min-width: 380px) {
+    padding: 0 20px;
+  }
+  .bouton{
+    margin: 0 auto;
+  }
+}
+
+.connexionTrue {
+  .bouton--lien {
+    margin: 2rem 0 3rem 10px;
+    @media (min-width: $bureau) {
+      margin: 4rem 0 5rem;
+    }
+  }
+  .groupeCouleur {
+    text-align: center;
+  }
+
+  .flex {
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
+    @media (min-width: $bureau) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+
+    .retour, .deconnexion {
+      margin: 2rem 0 4rem;
+      display: flex;
+      align-items: center;
+    }
+    .deconnexion {
+      .bouton {
+        margin: 0;
+      }
+      @media (max-width: $bureau) {
+        margin: 1rem 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+/*-----------------------------------*/
+/* Spécifications livraison / facturation / validation */
+/*-----------------------------------*/
+.livraison, .facturation, .validation {
+  .bouton {
+    @media (min-width: $bureau) {
+      margin: 6rem 0 6rem auto;
+    }
+  }
+}
+
+.livraison, .facturation {
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .codePostal, .prenom {
+    margin: 0;
+  }
+
+  .codePostal__input {
+    width: 135px;
+  }
+
+  .groupCheckbox, .groupeNom, h1, h2 {
+    margin-bottom: 0;
+  }
+
+  .checkbox {
+    display: block;
+
+    &:first-of-type {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .expirationCarte__label,
+  .adresse__legend {
+    padding: 0 0 3rem 0;
+    transform: none;
+  }
+
+  select {
+    display: block;
+    border-color: transparent;
+    margin-top: 5px;
+  }
+
+  .expirationCarte {
+    p {
+      margin: 0;
+    }
+
+    .msgDateComplete {
+      display: inline-block;
+      padding-top: 2rem;
+    }
+
+    &__select {
+      display: inline;
+    }
+
+    &__flex {
+      display: flex;
+      flex-flow: row nowrap;
+
+      .ctnForm {
+        margin: 0 2rem 0 0;
+      }
+    }
+  }
+
+  .codeSecCarte {
+    input {
+      width: 70px;
+    }
+    .icone--crochet {
+      right: initial;
+      left: 43px;
+    }
+  }
+
+  .numeroCarte {
+    input {
+      width: 197px;
+    }
+    .icone--crochet {
+      right: initial;
+      left: 170px;
+    }
+  }
+
+  .adresseTx, .expirationCarte, .infosFacturation {
+    &__label {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .infosFacturation {
+    &__courriel, &__tel {
+      font-style: italic;
+    }
+    &__courriel {
+      margin: 24px 0 4px;
+    }
+    &__tel {
+      margin: 4px 0 24px;
+    }
+  }
+}
+
+.facturation {
+  .adresseTx, .infosCarte, .infosFacturation {
+    margin-top: -5rem;
+  }
+
+  //.infosCarte {
+  //  margin-bottom: -5rem;
+  //}
+
+  .dateComplete {
+    position: relative;
+    .icone--crochet {
+      position: absolute;
+      top: -25px;
+      left: 155px;
+      width: 20px;
+      height: 20px;
+      filter: drop-shadow(0px 0px 1px $turquoise);
+      @media (min-width: $bureau) {
+      }
+    }
+  }
+  address {
+    margin: 20px 0;
+    p {
+      margin: 4px 0;
+    }
+  }
+}
+
+/* Boutons radios pour le type de paiement */
+.typePaiement {
+  .flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    @media (max-width: $bureau) {
+      max-width: 295px;
+      margin: 0 auto;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    width: 88px;
+    height: 93px;
+    border-bottom: 0 solid $corail;
+
+    &--paypal {
+      width: 120px;
+      background: url("../images/cartes/paypal.png") no-repeat center / contain;
+    }
+    &--visa {
+      background: url("../images/cartes/visa.gif") no-repeat center  / contain;
+    }
+    &--MC {
+      background: url("../images/cartes/master.gif") no-repeat center  / contain;
+    }
+    &--amex {
+      background: url("../images/cartes/amex.gif") no-repeat center  / contain;
+    }
+  }
+
+  &__input, &__label {
+    transition: all 0.28s cubic-bezier(0.43, 0, 0.17, 1.75);
+
+    &:hover, &:focus {
+      transform: translateY(-6px);
+    }
+  }
+
+  &__input:checked ~ &__label {
+    border-bottom: 5px solid $corail;
+  }
+}
+
+/* Liste à puce pour l'aide aux mots de passe */
+.aideSaisie {
+  &__liste {
+    padding-left: 2rem;
+  }
+  &__element {
+    list-style-type: circle;
+  }
+}

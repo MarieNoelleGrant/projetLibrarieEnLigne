@@ -1,0 +1,58 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+ *
+ * ----------------------------
+ * TABLE DES MATIÈRES - susy
+ * ----------------------------
+ * *** SUSY
+ * margin en mobile
+ */
+
+/* *** SUSY *** */
+@include border-box-sizing;
+
+@media(max-width:(($bureau)-1px)){
+  $susy: (
+    'columns': susy-repeat(4),
+    'gutters': 0.25,
+    'spread': 'narrow',
+    'container-spread': 'narrow',
+  );
+  .conteneur {
+    //background: susy-svg-grid($susy) no-repeat scroll;
+  }
+}
+@media(min-width:$bureau){
+  $susy: (
+    'columns': susy-repeat(12),
+    'gutters': 0.25,
+    'spread': 'narrow',
+    'container-spread': 'narrow'
+  );
+  .conteneur {
+    //background: susy-svg-grid($susy) no-repeat scroll;
+  }
+}
+
+/* margin en mobile */
+.conteneur {
+  margin: 0 10px;
+  @media(min-width:$bureau) {
+    margin: 0 4rem;
+    max-width: 1200px;
+  }
+  @media(min-width:1200px) {
+    margin: 0 auto;
+  }
+  &__tableOnly {
+    margin: 0;
+    @media(min-width:$bureau) {
+      margin: 0 4rem;
+      max-width: 1200px;
+      position:relative;
+    }
+    @media(min-width:1200px) {
+      margin: 0 auto;
+    }
+  }
+}

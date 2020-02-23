@@ -1,0 +1,148 @@
+/**
+ * @file Styles du pied de page
+ * @author Christine Daneau-Pelletier
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Pied de page
+ * ---------------------------------------------------------
+ * STYLES GÉNÉRAUX
+ * MENU
+ * LOGO - LIEN ACCUEIL
+ * SOCIAUX ET CONTACT
+ * COPYRIGHTS
+ */
+
+/*-----------------------------------*/
+/* STYLES GÉNÉRAUX */
+/*-----------------------------------*/
+.footer {
+  padding: 40px 20px;
+  background: #f5f5f5;
+
+  /*-----------------------------------*/
+  /* MENU (TABLE ONLY) */
+  /*-----------------------------------*/
+  .menu {
+    &__lien {
+      font-weight: 400;
+    }
+
+    &__logo {
+      display: block;
+      width: 220px;
+      margin: 0 auto;
+
+      @media (min-width: $bureau) {
+        padding-top: 1rem;
+      }
+    }
+
+    &__liste {
+      margin: 0;
+
+      &_item {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  /*-----------------------------------*/
+  /* SOCIAUX ET CONTACT */
+  /*-----------------------------------*/
+  .contact, .sociaux {
+    margin: 40px 0;
+  }
+
+  .map, .courriel, .telephone {
+    display: flex;
+    align-items: center;
+
+    &__tx {
+      margin-left: 5px;
+    }
+  }
+
+  .courriel__tx {
+    word-break: break-all;
+  }
+
+  .sociaux {
+    &__conteneur {
+      width: 180px;
+      height: 56px;
+      border-radius: 8px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+      background: $turquoise;
+
+      @media (min-width: $bureau) {
+        margin-top: 2rem;
+      }
+    }
+
+    &__lien {
+      transition: transform .3s cubic-bezier(0.43, 0, 0.17, 1.75);
+      &:hover {
+        transform: translateY(-6px);
+      }
+    }
+  }
+
+  /*-----------------------------------*/
+  /* COPYRIGHTS */
+  /*-----------------------------------*/
+  &__copyright {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+
+    @media (min-width: $bureau) {
+    margin: 4rem 10rem 0;
+    }
+
+    &_flex {
+      @media (max-width: $bureau) {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        margin: 20px 0;
+      }
+    }
+  }
+
+  @media (min-width: $bureau) {
+    padding: 60px 0;
+
+    .conteneur{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+    .menu__logo, .rappelNav, .sociaux, .contact {
+      display: block;
+      width: span(3 of 12);
+      margin: 0;
+    }
+
+    .h3 {
+      margin: 0;
+    }
+  }
+
+  // liens de droits
+  &__lien {
+    margin: 10px 40px;
+    @media (min-width: $bureau) {
+      margin: 0 20px;
+    }
+
+    &:after {
+      height: 1px;
+    }
+  }
+}

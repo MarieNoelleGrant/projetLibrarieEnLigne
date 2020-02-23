@@ -1,0 +1,156 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Icônes
+ * ---------------------------------------------------------
+ * Styles généraux
+ * source de chaque icône
+ */
+
+
+/*** Styles généraux ***/
+.icone {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+
+  /*** source de chaque icône ***/
+  /* Navigation */
+  &--livre {
+    background: url("../images/icones/livre.svg") no-repeat center / contain;
+  }
+  &--meilleur {
+    background: url("../images/icones/meilleur.svg") no-repeat center / contain;
+  }
+  &--decouvrir {
+    background: url("../images/icones/decouvrir.svg") no-repeat center / contain;
+  }
+  &--auteurs {
+    background: url("../images/icones/auteur.svg") no-repeat center / contain;
+  }
+  &--menu {
+    background: url("../images/icones/menu.svg") no-repeat center / contain;
+  }
+
+  /* Metanavigation */
+  &--langue {
+    background: url("../images/icones/langue.svg") no-repeat center / contain;
+  }
+  &--user {
+    background: url("../images/icones/user.svg") no-repeat center / contain;
+  }
+  &--deconnexion {
+    background: url("../images/icones/deconnexion.svg") no-repeat center / contain;
+  }
+
+  /* TOUS les paniers */
+  &--panier {
+    background: url("../images/icones/panier.svg") no-repeat center / contain;
+    &-plus {
+      background: url("../images/icones/panier--plus.svg") no-repeat center / contain;
+    }
+    &-couleur {
+      background: url("../images/icones/panier--couleur.svg") no-repeat center / contain;
+    }
+    &-couleur-plus {
+      background: url("../images/icones/panier--couleur-plus.svg") no-repeat center / contain;
+    }
+    &-blancPlus {
+      background: url("../images/icones/panier--blancPlus.svg") no-repeat center / contain;
+    }
+  }
+
+  /* Nous joindre */
+  &--carte, &--courriel, &--telephone, &--sociaux, &--joindre {
+    width: 30px;
+    height: 30px;
+  }
+  &--carte {
+    background: url("../images/icones/carte.svg") no-repeat center / contain;
+  }
+  &--courriel {
+    background: url("../images/icones/courriel.svg") no-repeat center / contain;
+  }
+  &--telephone {
+    background: url("../images/icones/telephone.svg") no-repeat center / contain;
+  }
+  &--contact {
+    background: url("../images/icones/contact.svg") no-repeat center / contain;
+  }
+
+  /* Média sociaux */
+  &--facebook {
+    background: url("../images/icones/facebook.svg") no-repeat center / contain;
+  }
+  &--instagram {
+    background: url("../images/icones/instagram.svg") no-repeat center / contain;
+  }
+  &--twitter {
+    background: url("../images/icones/twitter.svg") no-repeat center / contain;
+  }
+
+  /* Étoiles */
+  &--etoile {
+    &-vide {
+      background: url("../images/icones/etoile--vide.svg") no-repeat center / contain;
+    }
+    &-pleine {
+      background: url("../images/icones/etoile--pleine.svg") no-repeat center / contain;
+    }
+  }
+
+  /* Validation & fomulaires */
+  &--info {
+    background: url("../images/icones/info.svg") no-repeat center / contain;
+  }
+
+  &--erreur {
+    background: url("../images/icones/erreur.svg") no-repeat center / contain;
+  }
+
+  &--crochet {
+    background: url("../images/icones/crochet.svg") no-repeat center / contain;
+  }
+
+  &--oeil-ouvert {
+    background: url("../images/icones/oeil--ouvert.svg") no-repeat center / contain;
+  }
+
+  &--oeil-fermer {
+    background: url("../images/icones/oeil--fermer.svg") no-repeat center / contain;
+  }
+
+  /* AUTRES */
+  /* Coeur / Loupe du champ de recherche / Plus / Chevron */
+  &--coeur {
+    background: url("../images/icones/coeur.svg") no-repeat center / contain;
+  }
+
+  &--loupe {
+    background: url("../images/icones/loupe.svg") no-repeat center / contain;
+  }
+
+  &--plus {
+    background: url("../images/icones/plus.svg") no-repeat -4px center / contain;
+    width: 31px;
+    height: 31px;
+  }
+
+  &--chevron {
+    background: url("../images/icones/chevron.svg") no-repeat center / contain;
+    transition: all 0.4s cubic-bezier(0.43, 0, 0.17, 1.28);
+    @media(max-width:$bureau) {
+      width: 24px;
+      height: 24px;
+    }
+    &-fermer {
+      transform: rotate(180deg);
+    }
+    &-retour {
+      transform: rotate(90deg);
+    }
+  }
+}

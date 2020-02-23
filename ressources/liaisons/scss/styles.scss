@@ -1,0 +1,74 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ * @author Marie-Pierre Cardinal Labrie <1463196@cegep-ste-foy.qc.ca>
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+**/
+
+/**
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * BIBLIOTHÈQUES (dans le dossier bower_components)
+ ** Normalize
+ ** Susy
+ * -----------------------------------------------
+ * UTILITAIRES
+ ** variables
+ ** mixins
+ * -----------------------------------------------
+ * BASE
+ ** Charte typographique responsive
+ ** Régles générales à appliquer partout
+ ** Régles générales pour les icones
+ ** Régles générales pour les boutons
+ ** Régles générales pour les formulaires
+ * -----------------------------------------------
+ * GRILLE
+ ** Styles de base pour susy
+ * -----------------------------------------------
+ * MODULES
+ ** Régles spécifiques pour le fil d'Ariane (dans le catalogue et dans la fiche)
+ ** Régles spécifiques pour les listes de livres (dans l'accueil et dans le catalogue)
+ ** Régles spécifiques pour l'accueil
+ ** Régles spécifiques pour le catalogue
+ ** Régles spécifiques pour la fiche
+ ** Régles spécifiques pour la fenêtre modale du panier
+ ** Régles spécifiques pour le panier
+ ** Régles spécifiques pour la connexion et la création de compte
+ * -----------------------------------------------
+ */
+ 
+
+/*** Normalize ***/
+@import '../../../node_modules/normalize.scss/normalize.scss';
+@import '../../../node_modules/susy/sass/_susy.scss';
+@import '../../../node_modules/susy/sass/plugins/_svg-grid.scss';
+
+/*** Utilitaires ***/
+@import 'utilitaires/variables';
+@import 'utilitaires/mixins';
+
+/*** Base ***/
+@import 'base/typo';
+@import 'base/general';
+@import 'base/icones';
+@import 'base/boutons';
+@import 'base/formulaires';
+
+/*** Grille ***/
+@import 'grille/general';
+@import 'grille/entete';
+@import 'grille/piedDePage';
+
+/*** Modules ***/
+@import 'modules/filAriane';
+@import 'modules/listeLivres';
+@import 'modules/catalogue';
+@import 'modules/accueil';
+@import 'modules/fiche';
+@import 'modules/modalePanier';
+@import 'modules/panier';
+@import 'modules/confirmationValidation';
+@import 'modules/etapesProgression';
+
+

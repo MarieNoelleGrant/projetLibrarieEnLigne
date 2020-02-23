@@ -1,0 +1,76 @@
+/**
+ * @author Christine Daneau-Pelletier <christine.daneau.pelletier@gmail.com>
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Liste des livres
+ * ---------------------------------------------------------
+ * LISTE DES LIVRES
+ */
+
+/* --------------------------------------------- */
+/* LISTE DES LIVRES */
+/* --------------------------------------------- */
+
+// les livres
+.livre {
+  flex: 0 0 auto;
+  position: relative;
+  min-width: 150px;
+  max-width: 250px;
+  height: fit-content;
+
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -120px;
+    width: 100%;
+    height: 120px;
+    z-index: -1;
+  }
+
+  &__desc {
+    margin: 0;
+    padding: 5px 10px 0;
+    background: $blanc;
+
+    &_itemFlex {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__image {
+    vertical-align: bottom;
+  }
+
+  &__auteur {
+    margin-top: 5px;
+    @include fontSize(14px);
+    font-style: italic;
+    color: $marine;
+  }
+
+  &__bouton {
+    border: 0;
+    background: none;
+  }
+
+  &__panier button {
+    cursor: pointer;
+    transition: transform .25s cubic-bezier(0.43, 0, 0.17, 1.55);
+    &:hover, &:focus {
+      transform: translateY(-5px);
+      outline: none;
+    }
+    &:focus {
+      border: 1px solid $corail;
+      border-radius: 50%;
+      padding: 7px 7px 0;
+    }
+  }
+}
+

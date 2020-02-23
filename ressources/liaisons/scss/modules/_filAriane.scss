@@ -1,0 +1,232 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ *
+ * Styles spécifiques pour le fil d'ariane, selon le contexte, en table et en mobile!!
+ *
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * *** RÉGLES SPÉCIFIQUES AU FORMAT MOBILE ***
+ * -------------------------------------------------------------------------------------------------
+ * *** RÉGLES SPÉCIFIQUES AU FORMAT TABLE ***
+ * Régles pour l'icone du chevron en format table
+ * Régles générales pour les triforces du fil d'ariane en format table
+ * Régles spécifiques pour chaque seguement du fil d'ariane en format table
+ * -------------------------------------------------------------------------------------------------
+ * Effet hover/focus - interactivité
+ * -------------------------------------------------------------------------------------------------
+ * Styles pour le fil d'ariane, spécifique à la fiche / Panier / Connexion / Création
+ * Styles pour l'entête du panier
+ * -------------------------------------------------------------------------------------------------
+ *
+ **/
+
+.filAriane {
+  margin-top: 30px;
+  &__liste {
+    background-color: $corail--moyen;
+    width: fit-content;
+    margin-left: -10px;
+    padding-left: 10px;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      background: url(../images/triforce--blanc.svg) no-repeat right/contain;
+      height: 50px;
+      width: 44px;
+      right: -21px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      transform: rotate(180deg);
+      @media(min-width:$bureau) {
+        right: initial;
+        left: -20px;
+        transform: initial;
+      }
+    }
+  }
+  &__listeItem {
+    position: relative;
+    display: inline-block;
+    margin-left: 19px;
+    padding: 10px 50px 10px 30px;
+    @media(min-width:$bureau) {
+      margin-left: -5px;
+      padding: 10px 30px 10px 35px;
+    }
+
+    // *** RÉGLES SPÉCIFIQUES AU FORMAT MOBILE ***
+    @media(max-width:$bureau) {
+      &.filAriane__2eNiveau {
+        background-color: $corail--pale;
+        @media(max-width:$bureau) {
+          &:before {
+            content: "";
+            position: absolute;
+            background: url(../images/triforce--corailPale.svg) no-repeat right/contain;
+            height: 50px;
+            width: 44px;
+            left: -21px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotate(180deg);
+          }
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        background: url(../images/icones/chevron.svg) no-repeat center/20px;
+        height: 20px;
+        width: 20px;
+        left: -2px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(90deg);
+      }
+    }
+    // *** RÉGLES SPÉCIFIQUES AU FORMAT TABLE ***
+    @media(min-width:$bureau) {
+      // Régles pour l'icone du chevron en format table
+      &:nth-of-type(2), &:last-of-type {
+        &:before {
+          content:"";
+          position: absolute;
+          background: url('../images/icones/chevron.svg') no-repeat center / contain;
+          height: 20px;
+          width: 20px;
+          left: -16px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          transform: rotate(-90deg);
+        }
+      }
+      // Régles générales pour les triforces du fil d'ariane en format table
+      &:after {
+        content: "";
+        position: absolute;
+        height: 48px;
+        width: 45px;
+        right: -22px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transform: initial;
+        z-index: 1;
+      }
+      // Régles spécifiques pour chaque seguement du fil d'ariane en format table
+      &.filAriane__1eNiveau {
+        background-color: $corail--moyen;
+        &:after {
+          background: url(../images/triforce--corailMoyen.svg) no-repeat right/contain;
+        }
+      }
+      &.filAriane__2eNiveau {
+        background-color: $corail--pale;
+        &:after {
+          background: url(../images/triforce--corailPale.svg) no-repeat right/contain;
+        }
+      }
+      &.filAriane__3eNiveau {
+        background-color: $corail--tresPale;
+        &:after {
+          background: url(../images/triforce--corailTresPale.svg) no-repeat right/contain;
+        }
+      }
+    }
+  }
+
+  // Effet hover/focus - interactivité
+  // vise le span -> dans le a -> dans le li
+  &__lien {
+    &_tx {
+      position: relative;
+      &:after {
+        transition: all .2s cubic-bezier(0.43, 0, 0.17, 1.55);
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: $charcoal;
+        opacity: .85;
+      }
+    }
+
+    &:hover, &:focus {
+      span:after {
+        height: 2px;
+      }
+    }
+  }
+}
+
+//*** Styles pour le fil d'ariane, spécifique à la fiche / Panier / Connexion / Création
+.panier, .connexion, .creer {
+  .filAriane {
+    @media (min-width: $bureau) {
+      &__listeItem {
+        &.filAriane__2eNiveau {
+          padding-left: 25px;
+          margin-left: 0;
+
+          &:after {
+            background: url(../images/triforce--blanc.svg) no-repeat right/contain;
+            transform: rotate(180deg);
+          }
+
+          &:before {
+            z-index: 2;
+            margin-left: 10px;
+          }
+        }
+
+        &:last-of-type {
+          &:before {
+            transform: rotate(90deg);
+          }
+        }
+      }
+      &__liste {
+        &:after {
+          background: url(../images/triforce--corailPale.svg) no-repeat right/contain;
+          transform: rotate(180deg);
+          left: 22px;
+        }
+
+        background-color: $corail--moyen;
+        margin-left: -20px;
+        padding-left: 45px;
+      }
+    }
+  }
+
+  // *** Styles pour l'entête du panier
+  .filAriane__liste {
+    &:before {
+      content: "";
+      position: absolute;
+      background: url(../images/triforce--corailMoyen.svg) no-repeat right/contain;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      transform: rotate(180deg);
+      @media(min-width:$tablette) AND (max-width:$large) {
+        height: 46px;
+        width: 46px;
+        left: -22px;
+      }
+      @media(min-width:$large) {
+        height: 50px;
+        width: 50px;
+        left: -24px;
+      }
+    }
+  }
+}

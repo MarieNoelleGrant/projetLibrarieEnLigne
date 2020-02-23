@@ -1,0 +1,113 @@
+/**
+ * @author Marie-Noëlle Grant <m.noelle.grant@gmail.com>
+ * @author Marie-Pierre Cardinal Labrie <1463196@cegep-ste-foy.qc.ca>
+ * @author Christine Daneau Pelletier <christine.daneau.pelletier@gmail.com>
+**/
+
+/**
+ * ------------------
+ * TABLE DES MATIÈRES
+ * ------------------
+ * AUTRES GÉNÉRALITÉS
+ * page 404
+ * espace pour le menu fixe
+ * aller au contenu
+ * Page sans JavaScript
+ * -----------------------------------------------
+ */
+
+/* AUTRES GÉNÉRALITÉS */
+body {
+  overflow-x : hidden;
+}
+a {
+  text-decoration: none;
+  color: $charcoal;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+img{
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+blockquote {
+  margin-block-end: 0.5em;
+  margin-block-start: 0.5em;
+}
+
+.displayNone {
+  display: none;
+}
+
+.tableOnly {
+  @media (max-width: $bureau) {
+    display: none;
+  }
+}
+.mobileOnly {
+  @media (min-width: $bureau) {
+    display: none;
+  }
+}
+
+/* outline & selection */
+:focus {
+  outline: 1px solid $turquoise;
+  outline-offset: 0;
+}
+
+::selection {
+background-color: $turquoise--25;
+}
+
+/* page 404 */
+.pageErreur {
+  h1 {
+    margin-top: 100px;
+  }
+  p {
+    margin-bottom: 100px;
+  }
+}
+
+/* espace pour le menu fixe */
+@media (max-width: $bureau) {
+  .js {
+    main {
+      margin-top: 145px;
+      &.aMsgConnexion {
+        margin-top: 240px;
+      }
+      &.livraison, &.facturation, &.validation {
+        margin-top: 70px;
+      }
+    }
+  }
+}
+
+/* Aller au contenu */
+.allerContenu {
+  display:block;
+  padding: 10px;
+}
+
+/* Page sans javascript */
+.sansJs {
+  display:block;
+  margin: 10px;
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-bottom: -4px;
+  }
+}
+.js{
+  .js_desactive {
+    display: none;
+  }
+}

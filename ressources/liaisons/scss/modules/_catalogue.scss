@@ -1,0 +1,402 @@
+/**
+ * @author Marie-Pierre Cardinal-Labrie <1463196@cegep-ste-foy.qc.ca>
+**/
+
+/**
+ * ---------------------------------------------------------
+ * TABLE DES MATIÈRES - Styles du catalogue
+ * ---------------------------------------------------------
+ * Interraction des menus mobiles
+ * Placer livres
+ * Contenu bureau
+ * Section "catégories" mobile
+ * Section "catégories" bureau
+ * Section "tris"
+ * Boutons "filtres" et "tris"
+ * Bouton "changer format d'affichage"
+ * Pagination
+ * Formulaire nombre de pages
+ * Placer l'en-tête
+ */
+
+/*******************Interraction des menus mobiles**********************/
+.js {
+  .catalogue {
+    .tris__contenu {
+      display: none;
+      @media(min-width: $bureau) {
+        display: flex;
+
+      }
+      &.visible {
+        display: flex;
+      }
+    }
+    .categories__contenu {
+      display: none;
+      @media(min-width: $bureau) {
+        display: block;
+      }
+      &.visible {
+        display: block;
+      }
+    }
+  }
+}
+
+.catalogue {
+  /*******************Général**********************/
+   h1 {
+     margin-bottom: 20px;
+   }
+  .p {
+    font-weight: 400;
+  }
+  /*******************Placer livres**********************/
+  .livres {
+    &__liste {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    &__item {
+      max-width: span(4 of 4);
+      display: flex;
+      margin-bottom: 75px;
+      @media (max-width: $bureau) {
+        justify-content: center;
+      }
+      @media (min-width: $bureau) {
+        max-width: span(4 of 8);
+      }
+      &:nth-child(odd) {
+        margin-right: gutter(4);
+        @media (min-width: $bureau) {
+          margin-right: gutter(8);
+        }
+        .livre__desc {
+          border: 2px solid $turquoise--pale;
+          box-shadow: inset 3px 3px 0px $turquoise--pale, inset -3px -3px 0px $turquoise--pale;
+          &_itemFlex:after {
+            background: url("../images/signet--turquoise.svg");
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+  .livre {
+    &__image {
+      @include shadow--actualite;
+      transition: all .2s ease-in-out;
+      &:hover, &:focus {
+        box-shadow: 0 2px 14px -3px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+      }
+    }
+    &__desc {
+      z-index: 1;
+      width: 50%;
+      height: fit-content;
+      padding: 0;
+      border: 2px solid $turquoise--25-solid;
+      box-shadow: inset 3px 3px 0px $turquoise--25-solid, inset -3px -3px 0px $turquoise--25-solid;
+      @media (max-width: $bureau) {
+        max-width: 44%;
+      }
+      &_item {
+        position: relative;
+        &Flex {
+          &:after {
+            content: '';
+            position: absolute;
+            top: 98%;
+            background: url("../images/signet--turquoise-pale.svg");
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            height: 150px;
+            width: 101%;
+          }
+        }
+      }
+    }
+    &__lien {
+      width: 50%;
+    }
+    &__titre {
+      font-weight: 400;
+      border-bottom: 2px solid $turquoise--25-solid;
+      margin: 20px 10px 10px;
+      padding-bottom: 10px;
+    }
+    &__auteur {
+      font-style: normal;
+      margin: 10px;
+    }
+    &__prix {
+      font-weight: 400;
+      margin-left: 10px;
+    }
+    &__panier {
+      margin-right: 10px;
+    }
+
+  }
+  /*******************Contenu bureau**********************/
+  @media (min-width: $bureau) {
+    .index__page {
+      display: flex;
+      justify-content: space-between;
+    }
+    .livres__liste {
+      width: span(8 of 12);
+
+    }
+  }
+  /*******************Section "catégories" mobile**********************/
+  .categories__contenu {
+    &.visible {
+      background-color: transparentize($beige, .55);
+      padding: 10px;
+      text-decoration: underline;
+      li {
+        padding-top: 10px;
+      }
+    }
+  }
+  .categorie {
+    &--actif {
+      font-weight: bold;
+      & a {
+        text-decoration-color: $corail;
+      }
+    }
+  }
+
+  /*******************Section "Catégories" bureau**********************/
+  @media (min-width: $bureau) {
+    .categories {
+      padding-left: 15px;
+      padding-right: 5px;
+      width: span(4 of 12);
+      background-color: transparentize($beige, .55);
+      text-decoration: underline;
+      line-height: 45px;
+    }
+    .categorie {
+      &:hover {
+        font-weight: bolder;
+        & a {
+          text-decoration-color: $corail;
+        }
+      }
+    }
+  }
+
+  /*******************Section "Tris"**********************/
+  .tris {
+    &__contenu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background-color: $turquoise--25-solid;
+      padding-top: 30px;
+      @media (min-width: $bureau) {
+        background-color: transparent;
+      }
+    }
+  }
+  .tri {
+    background-color: $corail--25;
+    height: 37px;
+    width: span(1 of 4);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+    @media (min-width: $bureau) {
+      width: span(1 of 2);
+    }
+    &:nth-child(odd) {
+      margin-left: span(1 of 4) + gutter(4);
+      @media (min-width: $bureau) {
+        margin-left: 0;
+      }
+    }
+    &:nth-child(even) {
+      margin-right: span(1 of 4) + gutter(4);
+      @media (min-width: $bureau) {
+        margin-right: 0;
+      }
+    }
+    &__actif {
+      background-color: $corail;
+      @include shadow--actualite;
+      & a {
+        color: $blanc;
+      }
+    }
+    &__lien {
+      display: block;
+      width: 100%;
+      height: 100%;
+      line-height: 37px;
+    }
+  }
+
+  /*******************Boutons "filtres" et "tris"**********************/
+  .tris,
+  .categories {
+    &__accordeon {
+      display: flex;
+    }
+    &__titre {
+      background-color: $corail--25;
+      border: 1px solid $corail--25;
+      height: 35px;
+      line-height: 35px;
+      //width: span(1 of 4);
+      width: span(4 of 4);
+      margin: 0;
+      border-radius: 10px 0 0 10px;
+      text-align: center;
+    }
+    &__bouton {
+      border: 1px solid $corail--25;
+      background-image: url("../images/icones/chevron.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 35px;
+      width: 35px;
+      background-size: 65%;
+      border-radius: 0 10px 10px 0;
+      transition: all 0.2s ease-in-out;
+      &--actif {
+        transform: rotate(180deg);
+        border-radius: 10px 0 0 10px;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  /*******************Bouton "changer format d'affichage"**********************/
+  .filtres {
+    &__formatPage {
+      width: span(1.5 of 4);
+      @media (min-width: $bureau) {
+        width: span(1.5 of 12)
+      }
+    }
+  }
+
+  /*******************Pagination*******************/
+  .page {
+    display: inline-block;
+    line-height: 3rem;
+    height: 3rem;
+    position: relative;
+    bottom: 0.8rem
+  }
+  .chevron {
+    &__premier {
+      display: inline-block;
+      background: url("../images/icones/chevron--double.svg") no-repeat center / contain;
+      width: 3rem;
+      height: 3rem;
+      &--inactif {
+        background: url("../images/icones/chevron--double--inactif.svg") no-repeat center / contain;
+      }
+    }
+    &__dernier {
+      display: inline-block;
+      background: url("../images/icones/chevron--double.svg") no-repeat center / contain;
+      width: 3rem;
+      height: 3rem;
+      transform: rotate(180deg);
+      &--inactif {
+        background: url("../images/icones/chevron--double--inactif.svg") no-repeat center / contain;
+      }
+    }
+    &__precedent {
+      display: inline-block;
+      background: url("../images/icones/chevron.svg") no-repeat center / contain;
+      width: 3rem;
+      height: 3rem;
+      transform: rotate(90deg);
+      &--inactif {
+        background: url("../images/icones/chevron--inactif.svg") no-repeat center / contain;
+      }
+    }
+    &__suivant {
+      display: inline-block;
+      background: url("../images/icones/chevron.svg") no-repeat center / contain;
+      width: 3rem;
+      height: 3rem;
+      transform: rotate(-90deg);
+      &--inactif {
+        background: url("../images/icones/chevron--inactif.svg") no-repeat center / contain;
+      }
+    }
+  }
+  /*******************Formulaire nombre de pages*******************/
+  .bouton {
+    &--lien {
+      background-color: transparent;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+  }
+
+  /*******************Placer l'en-tête*******************/
+  .filtres {
+    position: relative;
+    @media (min-width: $bureau) {
+      display: flex;
+    }
+    &__menusDeroulants {
+
+    }
+    &__formatPage {
+      position: absolute;
+    }
+    &__pagination {
+      @media (min-width: $bureau) {
+        width: span(8 of 12);
+        margin-left: span(2 of 12) + gutter(12);
+      }
+    }
+    &__tris {
+      @media (min-width: $bureau) {
+        width: span(2 of 12);
+      }
+    }
+  }
+  .tris,
+  .categories {
+    &__accordeon {
+      padding-left: span(2 of 4);
+    }
+  }
+  .tris {
+    &__contenu {
+      @media (min-width: $bureau) {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  .pagination {
+    margin-top: 30px;
+    text-align: center;
+    @media (min-width: $bureau) {
+      margin-top: 0;
+    }
+  }
+   form {
+     text-align: center;
+   }
+}
