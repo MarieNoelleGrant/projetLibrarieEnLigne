@@ -17,5 +17,5 @@ En équipe de 3, nous devions créer la plateforme de vente en ligne d'une libra
 </ul>
 
 <h3>Co-équipières</h3>
-<b>Christine Daneau-Pelletier</b> - Direction visuelle + intégration et programmation de la page d'accueil, des éléments communs (menus, pied de page, etc) et de la partie connexion/création de compte de la section transactionnelle + gestion de l'envoi de courriel<br/>
-<b>Marie-Pierre Cardinal-Labrie</b> - Intégration et programmation de la page catalogue des livres, intégration, programmation et validation côté serveur des différentes pages de la section transactionnelles
+<p><b>Christine Daneau-Pelletier</b> - Direction visuelle + intégration et programmation de la page d'accueil, des éléments communs (menus, pied de page, etc) et de la partie connexion/création de compte de la section transactionnelle + gestion de l'envoi de courriel</p>
+<p><b>Marie-Pierre Cardinal-Labrie</b> - Intégration et programmation de la page catalogue des livres, intégration, programmation et validation côté serveur des différentes pages de la section transactionnelles</p>
