@@ -132,16 +132,16 @@ class App
 
         if ($this->pdo === null) {
             if ($this->getServeur() === 'serveur-local') {
-                $leServeur = "localhost";
-                $lUtilisateur = "19_displaynonnes";
-                $leMotDePasse = "chevalblanc";
-                $leNomBD = "19_rpni3_display_nonnes";
+                $leServeur = "...";
+                $lUtilisateur = "...";
+                $leMotDePasse = "...";
+                $leNomBD = "...";
             }
             else {
-                $leServeur = "localhost";
-                $lUtilisateur = "19_displaynonnes";
-                $leMotDePasse = "chevalblanc";
-                $leNomBD = "19_rpni3_display_nonnes";
+                $leServeur = "...";
+                $lUtilisateur = "...";
+                $leMotDePasse = "...";
+                $leNomBD = "...";
             }
             // *** Important de dissocier la classe ConnexionBD et l'objet de type PDO ********************************
             // 1. La classe ConnexionBD sert à établir le contexte de développement
